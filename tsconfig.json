@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "target": "ESnext",
+    "module": "ESnext",
+    "moduleResolution": "node",
+    "lib": ["dom", "ES6", "ESnext", "dom.iterable", "scripthost"],
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "noEmitOnError": true,
+    "jsx": "react",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true
+  },
+  "exclude": ["node_modules", "public", ".cache"]
+}
