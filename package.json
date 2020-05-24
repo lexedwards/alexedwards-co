@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-tested-starter",
+  "name": "alexedwards-co",
   "private": true,
-  "description": "Gatsby template setup with Cypress (End-to-End testing), Jest (Unit & Integration testing) and Typescript (Type validation)",
+  "description": "Website setup with Cypress (End-to-End testing), Jest (Unit & Integration testing) and Typescript (Type validation)",
   "version": "0.1.0",
   "author": "Alex Edwards <alex@alexedwards.co> (https://alexedwards.co)",
   "dependencies": {
