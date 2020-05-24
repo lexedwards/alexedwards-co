@@ -1,49 +1,51 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React, {ReactChildren} from 'react'
-import {useStaticQuery, graphql} from 'gatsby'
+import * as React from 'react'
 
 import Header from './header'
 import './layout.css'
+import { Helmet } from 'react-helmet'
+import Footer from './footer'
 
 interface LayoutProps {
-  children: ReactChildren
+  location: { pathname: string }
+  title: string
+  children: React.ReactChildren
+  className: string
+  pageContext: {
+    siteTitle?: string
+  }
+  path: string
 }
 
-const Layout = ({children}: LayoutProps) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+function Layout({
+  location,
+  title,
+  children,
+  className,
+  pageContext,
+  path,
+  ...rest
+}: LayoutProps) {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Helmet>
+        <title>{title}</title>
+        <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        <meta name="theme-color" content="#ffc600" />
+      </Helmet>
+      <Header location={location} />
       <main
-        role="main"
         style={{
           margin: `0 auto`,
           maxWidth: 960,
+          minHeight: `80vh`,
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
         {children}
       </main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Footer />
     </>
   )
 }
