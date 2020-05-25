@@ -7,27 +7,38 @@ const Header = styled.header`
 margin-bottom: 1.45rem;
 `
 
-const InnerHead = styled.nav`
+const InnerHead = styled.div`
 margin: 0 auto;
 max-width: 1240px;
 padding: 1.25rem 0rem;
 display: flex;
 justify-content: space-between;
+align-items: center;
 border-bottom: 1px solid #C6C6C6;
 `
 
 const H1 = styled.h1`
-font-size: 1.563rem;
+font-size: ${props => props.theme.fontSize.lg};
 margin: 0;
+color: ${props => props.theme.neutral.n900};
 `
 
-const MenuLine = styled.div`
+const MenuLine = styled.nav`
 display: flex;
 justify-content: flex-end;
 align-items: center;
- > p {
+ > *:not(:last-child) {
    margin: 0;
    margin-right: 1rem;
+   color: ${props => props.theme.neutral.n700};
+ }
+ > a.button {
+  color: ${props => props.theme.neutral.n50};
+  background-color: hsl(204,50%,44%);
+  font-size: ${props => props.theme.fontSize.sm};
+  :hover {
+    background-color: hsl(199,88%,30%);
+  }
  }
 `
 
@@ -36,42 +47,80 @@ interface Props {
   location: {
     pathname: string
   }
+  pageContext?: unknown;
 }
 
+interface PageInt {
+  node: {
+    title: string
+    description: string
+    meta: {
+      slug: string
+    }
+  }
+}
 
 const HeaderComponent = ({ location, siteTitle }: Props) => {
 
   const data = useStaticQuery(
     graphql`
-      query {
-        contentfulSiteMetadata {
-          title
+query {
+  contentfulSiteMetadata {
+    title
+    description
+  }
+  allContentfulPage(filter: { isTopLevel: { eq: true } }, sort: { fields: title }) {
+    edges {
+      node {
+        title
+        meta {
+              ...on ContentfulMeta {
+            slug
+          }
         }
       }
-    `
+    }
+  }
+}
+`
   )
 
-  const title = location.pathname === '/' ? data.contentfulSiteMetadata.title : `Alex Edwards | ${siteTitle}`
+  const title = `Alex Edwards | ${location.pathname === '/' ? data.contentfulSiteMetadata.description : siteTitle}`
 
 
   return (
     <Header>
       <InnerHead>
-        <H1>
-          <Link
-            to="/"
-            style={{
-              textDecoration: `none`,
-            }}
-          >
-            {title}
-          </Link>
-        </H1>
+
+        <Link
+          to="/"
+          style={{
+            textDecoration: `none`,
+          }}
+        >
+          <H1>{title}</H1>
+        </Link>
         <MenuLine>
-          <p>About</p>
-          <p>Portfolio</p>
-          <p>Blog</p>
-          <button role="button">Say Hello</button>
+          {data.allContentfulPage.edges.map((page: PageInt) => {
+            if (!page.node.meta.slug) return undefined;
+            if (page.node.meta.slug === 'contact') return (
+              <Link
+                to={`/${page.node.meta.slug}`}
+                className="button"
+                key={page.node.meta.slug}
+                role="button">
+                Say Hello
+              </Link>
+            )
+            return (
+              <Link to={`/${page.node.meta.slug}`} key={page.node.title}>
+                <p>
+                  {page.node.title}
+                </p>
+              </Link>
+            )
+          }
+          )}
         </MenuLine>
       </InnerHead>
     </Header>

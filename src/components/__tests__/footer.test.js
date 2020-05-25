@@ -1,8 +1,10 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render as rtlRender } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import * as Gatsby from 'gatsby'
 import Footer from '../footer'
+import { ThemeProvider } from 'styled-components'
+import { theme as GStheme } from '../styles/GlobalStyles'
 
 const useStaticQuery = jest.spyOn(Gatsby, 'useStaticQuery');
 useStaticQuery.mockImplementation(() => ({
@@ -46,6 +48,24 @@ useStaticQuery.mockImplementation(() => ({
     ]
   }
 }));
+
+function render(
+  ui,
+  {
+    theme = GStheme,
+    ...renderOptions
+  } = {},
+) {
+  function Wrapper({ children }) {
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  }
+  return {
+    ...rtlRender(ui, {
+      wrapper: Wrapper,
+      ...renderOptions,
+    })
+  }
+}
 
 test('It renders', () => {
   const { getByText } = render(<Footer />)

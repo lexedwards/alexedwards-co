@@ -1,18 +1,58 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render as rtlRender } from '@testing-library/react'
 import Header from '../header'
 import { axe } from 'jest-axe'
 import * as Gatsby from 'gatsby'
+import { ThemeProvider } from 'styled-components'
+import { theme as GStheme } from '../styles/GlobalStyles'
 
 const useStaticQuery = jest.spyOn(Gatsby, 'useStaticQuery');
 useStaticQuery.mockImplementation(() => ({
   contentfulSiteMetadata: {
-    title: 'Hello-Title'
+    description: 'Hello-Title'
   },
+  allContentfulPage: {
+    edges: [
+      {
+        node: {
+          title: 'about',
+          meta: {
+            slug: "about"
+          }
+        }
+      },
+      {
+        node: {
+          title: 'contact',
+          meta: {
+            slug: "contact"
+          }
+        }
+      }
+    ]
+  }
 }));
 
 function mockLocation(pathname = "/") {
   return { pathname }
+}
+
+function render(
+  ui,
+  {
+    theme = GStheme,
+    ...renderOptions
+  } = {},
+) {
+  function Wrapper({ children }) {
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  }
+  return {
+    ...rtlRender(ui, {
+      wrapper: Wrapper,
+      ...renderOptions,
+    })
+  }
 }
 
 test('It displays the correct title', () => {
