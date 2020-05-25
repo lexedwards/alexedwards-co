@@ -10646,10 +10646,10 @@ export type Unnamed_2_Query = { contentfulSiteMetadata?: Maybe<Pick<ContentfulSi
         & { meta?: Maybe<Pick<ContentfulMeta, 'slug'>> }
       ) }> } };
 
-export type Unnamed_3_QueryVariables = {};
+export type HomepageQueryVariables = {};
 
 
-export type Unnamed_3_Query = { allContentfulPage: { edges: Array<{ node: (
+export type HomepageQuery = { allContentfulPage: { edges: Array<{ node: (
         Pick<ContentfulPage, 'title'>
         & { blocks?: Maybe<(
           Pick<ContentfulPageHome, 'title' | 'subTitle'>

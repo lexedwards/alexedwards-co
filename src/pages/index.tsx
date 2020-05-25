@@ -1,8 +1,9 @@
 import React from 'react'
-import { graphql, Link, PageProps } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
+import { HomepageQuery } from '../../graphql-types'
 
 const H1 = styled.h1`
 font-size: ${props => props.theme.fontSize.xxxlg};
@@ -31,11 +32,15 @@ display: flex;
 align-items: center;
 `
 
-const IndexPage = ({ data }: PageProps) => {
+interface HomepageProps {
+  data: HomepageQuery
+}
+
+const IndexPage: React.FC<HomepageProps> = ({ data }) => {
   console.log(data)
   const blocks = data.allContentfulPage.edges[0].node.blocks;
-  const subBlack = blocks.subTitle.split(' ').slice(0, 4).join(' ')
-  const subColor = blocks.subTitle.split(' ').slice(4).join(' ')
+  const subBlack = blocks?.subTitle?.split(' ').slice(0, 4).join(' ')
+  const subColor = blocks?.subTitle?.split(' ').slice(4).join(' ')
   return (
     <>
       <Helmet>
@@ -47,13 +52,13 @@ const IndexPage = ({ data }: PageProps) => {
       </Pos>
       <SplitView>
         <Rounded>
-          <Img fluid={blocks.authorBio.profilePicture.fluid} />
+          <Img fluid={blocks?.authorBio?.profilePicture?.fluid as FluidObject} />
         </Rounded>
         <div style={{ maxWidth: '680px' }}>
-          <H2>{blocks.authorBio.blurbTitle}</H2>
+          <H2>{blocks?.authorBio?.blurbTitle}</H2>
           <p>
-            {blocks.authorBio.blurbDesc.blurbDesc} {
-              blocks.authorBio.blurbLead ? <Link to="/about">{blocks.authorBio.blurbLead}</Link> : null}
+            {blocks?.authorBio?.blurbDesc?.blurbDesc} {
+              blocks?.authorBio?.blurbLead ? <Link to="/about">{blocks?.authorBio?.blurbLead}</Link> : null}
           </p>
         </div>
       </SplitView>
@@ -61,8 +66,8 @@ const IndexPage = ({ data }: PageProps) => {
   )
 }
 
-export const HomepageQuery = graphql`
-query {
+export const query = graphql`
+query Homepage {
 allContentfulPage(filter: {title: {regex: "/homepage/i"}}) {
 edges {
   node {
