@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 import Footer from './footer'
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles, { theme } from './styles/GlobalStyles'
+import { graphql } from 'gatsby'
 
 interface LayoutProps {
   location: { pathname: string }
@@ -15,6 +16,37 @@ interface LayoutProps {
     siteTitle?: string
   }
   path: string
+  data: {
+    contentfulSiteMetadata: {
+      title: string
+      description: string
+    }
+    allContentfulPage: {
+      edges: pageEdges[]
+    }
+    allContentfulAuthorSocialLinks: {
+      edges: [
+        {
+          node: {
+            "devTo": string
+            "github": string
+            "instagram": string
+            "linkedin": string
+            "twitter": string
+          }
+        }
+      ]
+    }
+  }
+}
+
+type pageEdges = {
+  node: {
+    title: string
+    meta: {
+      slug: string
+    }
+  }
 }
 
 const Main = styled.main`
@@ -28,8 +60,8 @@ function Layout({
   title,
   children,
   pageContext,
-}: LayoutProps) {
 
+}: LayoutProps) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -40,7 +72,7 @@ function Layout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto&family=Source+Code+Pro&display=swap" rel="stylesheet" />
         <meta name="theme-color" content="#ffc600" />
       </Helmet>
-      <Header location={location} pageContext={pageContext} />
+      <Header location={location} />
       <Main>
         {children}
       </Main>
