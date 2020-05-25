@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet'
 import Footer from './footer'
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles, { theme } from './styles/GlobalStyles'
-import { graphql } from 'gatsby'
 
 interface LayoutProps {
   location: { pathname: string }
@@ -59,8 +58,6 @@ function Layout({
   location,
   title,
   children,
-  pageContext,
-
 }: LayoutProps) {
   return (
     <ThemeProvider theme={theme}>
