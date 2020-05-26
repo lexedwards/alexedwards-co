@@ -40,7 +40,12 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       }
     },
-    `gatsby-plugin-ts`,
+    {
+      resolve: `gatsby-plugin-ts`,
+      options: {
+        typeCheck: process.env.NODE_ENV !== 'production',
+      }
+    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
