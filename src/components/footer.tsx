@@ -16,6 +16,7 @@ display: flex;
 justify-content: center;
 max-width: 1240px;
 margin: 0 auto;
+margin-top: 2rem;
 border-top: 1px solid #C6C6C6;
 padding: 2.5rem 0;
  > * {
