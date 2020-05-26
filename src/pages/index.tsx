@@ -18,7 +18,10 @@ const Color = styled.span`
 color: hsl(199,88%,30%);
 `
 const Pos = styled.div`
-margin: calc(30 * var(--vh)) 0;
+margin: 2rem;
+@media (min-width: 640px) {
+  margin: 250px 0;
+}
 `
 
 const Rounded = styled.div`
@@ -29,6 +32,10 @@ margin-right: 20px;
 `
 const SplitView = styled.div`
 display: flex;
+flex-flow: column;
+@media (min-width: 640px) {
+  flex-flow: row;
+}
 align-items: center;
 `
 
@@ -37,7 +44,6 @@ interface HomepageProps {
 }
 
 const IndexPage: React.FC<HomepageProps> = ({ data }) => {
-  console.log(data)
   const blocks = data.allContentfulPage.edges[0].node.blocks;
   const subBlack = blocks?.subTitle?.split(' ').slice(0, 4).join(' ')
   const subColor = blocks?.subTitle?.split(' ').slice(4).join(' ')

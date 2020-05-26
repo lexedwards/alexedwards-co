@@ -33,7 +33,7 @@ align-items: center;
    color: ${props => props.theme.neutral.n700};
  }
  > a.button {
-  color: ${props => props.theme.neutral.n50};
+  color: white;
   background-color: hsl(204,50%,44%);
   font-size: ${props => props.theme.fontSize.sm};
   :hover {

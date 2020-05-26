@@ -32,6 +32,7 @@ body {
   @media(min-width: 40rem) {
     margin: 0;
   }
+  background : linear-gradient(175deg,hsl(0,0%,94%) 0%,hsl(0,0%,94%) 75vh,rgb(255, 255, 255) calc(75vh + 1px),rgb(255, 255, 255) 100%);
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Poppins', sans-serif;
