@@ -11,7 +11,7 @@ interface LayoutProps {
   title: string
   children: React.ReactChildren
   className: string
-  pageContext: {
+  pageContext?: {
     siteTitle?: string
   }
   path: string
@@ -58,6 +58,7 @@ function Layout({
   location,
   title,
   children,
+  pageContext
 }: LayoutProps) {
   return (
     <ThemeProvider theme={theme}>
@@ -69,7 +70,7 @@ function Layout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto&family=Source+Code+Pro&display=swap" rel="stylesheet" />
         <meta name="theme-color" content="#ffc600" />
       </Helmet>
-      <Header location={location} />
+      <Header location={location} context={pageContext} />
       <Main>
         {children}
       </Main>

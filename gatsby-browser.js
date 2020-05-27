@@ -2,8 +2,9 @@
 
 const React = require('react')
 const Layout = require('./src/components/Layout').default
+require('prismjs/themes/prism-tomorrow.css')
 
-exports.wrapPageElement = ({element, props}) => {
+exports.wrapPageElement = ({ element, props }) => {
   return <Layout {...props}>{element}</Layout>
 }
 

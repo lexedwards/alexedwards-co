@@ -1,9 +1,10 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
 import { HomepageQuery } from '../../graphql-types'
+import renderAst from '../components/utils/Rehype'
 
 const H1 = styled.h1`
 font-size: ${props => props.theme.fontSize.xxxlg};
@@ -62,10 +63,7 @@ const IndexPage: React.FC<HomepageProps> = ({ data }) => {
         </Rounded>
         <div style={{ maxWidth: '680px' }}>
           <H2>{blocks?.authorBio?.blurbTitle}</H2>
-          <p>
-            {blocks?.authorBio?.blurbDesc?.blurbDesc} {
-              blocks?.authorBio?.blurbLead ? <Link to="/about">{blocks?.authorBio?.blurbLead}</Link> : null}
-          </p>
+          {renderAst(blocks?.authorBio?.blurbDesc?.childMarkdownRemark?.htmlAst)}
         </div>
       </SplitView>
     </>
@@ -85,7 +83,9 @@ edges {
         authorBio {
           blurbTitle
           blurbDesc {
-            blurbDesc
+            childMarkdownRemark {
+              htmlAst
+            }
           }
           blurbLead
           profilePicture {
