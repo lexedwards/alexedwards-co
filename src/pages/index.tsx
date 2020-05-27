@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
@@ -62,10 +62,7 @@ const IndexPage: React.FC<HomepageProps> = ({ data }) => {
         </Rounded>
         <div style={{ maxWidth: '680px' }}>
           <H2>{blocks?.authorBio?.blurbTitle}</H2>
-          <p>
-            {blocks?.authorBio?.blurbDesc?.blurbDesc} {
-              blocks?.authorBio?.blurbLead ? <Link to="/about">{blocks?.authorBio?.blurbLead}</Link> : null}
-          </p>
+          <p dangerouslySetInnerHTML={{ __html: blocks?.authorBio?.blurbDesc?.childMarkdownRemark?.html as string }} />
         </div>
       </SplitView>
     </>
@@ -85,7 +82,9 @@ edges {
         authorBio {
           blurbTitle
           blurbDesc {
-            blurbDesc
+            childMarkdownRemark {
+              html
+            }
           }
           blurbLead
           profilePicture {
