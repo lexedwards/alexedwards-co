@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
 import { HomepageQuery } from '../../graphql-types'
+import renderAst from '../components/utils/Rehype'
 
 const H1 = styled.h1`
 font-size: ${props => props.theme.fontSize.xxxlg};
@@ -62,7 +63,7 @@ const IndexPage: React.FC<HomepageProps> = ({ data }) => {
         </Rounded>
         <div style={{ maxWidth: '680px' }}>
           <H2>{blocks?.authorBio?.blurbTitle}</H2>
-          <p dangerouslySetInnerHTML={{ __html: blocks?.authorBio?.blurbDesc?.childMarkdownRemark?.html as string }} />
+          {renderAst(blocks?.authorBio?.blurbDesc?.childMarkdownRemark?.htmlAst)}
         </div>
       </SplitView>
     </>
@@ -83,7 +84,7 @@ edges {
           blurbTitle
           blurbDesc {
             childMarkdownRemark {
-              html
+              htmlAst
             }
           }
           blurbLead
