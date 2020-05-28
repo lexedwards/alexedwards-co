@@ -3,6 +3,8 @@ import { Link as GLink, navigate } from 'gatsby'
 
 interface LinkProps {
   children: React.ReactElement | string;
+  className?: string;
+  role?: string;
   activeClassName?: string;
   partiallyActive?: boolean;
   to?: string;
@@ -19,8 +21,8 @@ function Link({ children, to, href, activeClassName, partiallyActive, ...rest }:
 
   if (internal.test(ref)) {
     if (file.test(ref)) <a href={ref} download {...rest}>{children}</a>
-    if (local.test(ref)) <a onClick={() => { navigate(ref) }}>{children}</a>
-    return (<GLink to={ref} activeClassName={activeClassName} partiallyActive={partiallyActive}>{children}</GLink>)
+    if (local.test(ref)) <a onClick={() => { navigate(ref) }} {...rest}>{children}</a>
+    return (<GLink to={ref} activeClassName={activeClassName} partiallyActive={partiallyActive} {...rest}>{children}</GLink>)
   }
 
   // All else, this is an external link

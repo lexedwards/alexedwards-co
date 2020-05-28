@@ -1,4 +1,5 @@
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
+import Link from './utils/Link'
 import * as React from 'react'
 import styled from 'styled-components'
 
