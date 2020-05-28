@@ -9,20 +9,6 @@ module.exports = {
     author: `Alex Edwards <alex@alexedwards.co> (https://alexedwards.co)`,
   },
   plugins: [
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          `gatsby-remark-reading-time`,
-          {
-            resolve: `gatsby-remark-images-contentful`,
-            options: {
-              maxWidth: 960,
-            }
-          }
-        ]
-      }
-    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -39,6 +25,33 @@ module.exports = {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       }
+    },
+    {
+      resolve: `gatsby-plugin-ts`,
+      options: {
+        typeCheck: process.env.NODE_ENV !== 'production',
+      }
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 960,
+            }
+          },
+          {
+            resolve: `gatsby-remark-prismjs`
+          },
+          `gatsby-remark-reading-time`,
+        ]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-catch-links`,
+      options: {}
     },
     `gatsby-plugin-styled-components`,
     {

@@ -5,7 +5,7 @@ describe('Navigate the Default Pages', () => {
   })
 
   it('Loads and goes to Page 2', () => {
-    cy.findByText(/go to page 2/i).click()
+    cy.get('p > a').click()
   })
 
   it('Has no A11y Violations', () => {
