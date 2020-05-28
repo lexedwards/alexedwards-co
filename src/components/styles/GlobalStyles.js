@@ -10,7 +10,7 @@ const theme = {
     n500: `hsl(0,0%,46%)`,
     n600: `hsl(0,0%,36%)`,
     n700: `hsl(0,0%,27%)`,
-    n800: `hsl(0,10%,19%)`,
+    n800: `hsl(0,5%,19%)`,
     n900: `hsl(0,5%,10%)`,
   },
   fontSize: {
@@ -74,17 +74,17 @@ img {
 }
 
 .gatsby-highlight-code-line {
-  background-color: #454545;
+  background-color: ${props => props.theme.neutral.n800};
   display: block;
   margin-right: -1rem;
   margin-left: -1rem;
   padding-right: 1rem;
   padding-left: 0.75rem;
-  border-left: 0.25rem solid #f99;
+  border-left: 0.25rem solid hsl(206,99%,77%);
 }
 
 .gatsby-highlight {
-  background-color: #2d2d2d;
+  background-color: ${props => props.theme.neutral.n900};
   border-radius: 0.3rem;
   margin: 0.5em 0;
   padding: 1rem;

@@ -20,8 +20,10 @@ line-height: 1.5;
 
 const BQ = styled.blockquote`
 font-size: ${props => props.theme.fontSize.sm};
-border-left: 2px solid;
-padding-left: 1rem;
+border-left: 0.4rem solid;
+padding-left: 0.75rem;
+border-color: ${props => props.theme.neutral.n100};
+color: ${props => props.theme.neutral.n700};
 `
 
 const Table = styled.table`
