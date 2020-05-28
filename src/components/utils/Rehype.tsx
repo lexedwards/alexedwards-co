@@ -16,8 +16,13 @@ const renderAst = new rehypeReact({
     h6: Heading.H6,
     p: Body.P,
     a: Link,
+    ol: Body.OL,
+    ul: Body.UL,
+    li: Body.LI,
     blockquote: Body.BQ,
     table: Body.Table,
+    th: Body.TH,
+    td: Body.TD,
   }
 }).Compiler;
 
