@@ -49,10 +49,6 @@ module.exports = {
         ]
       }
     },
-    {
-      resolve: `gatsby-plugin-catch-links`,
-      options: {}
-    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,

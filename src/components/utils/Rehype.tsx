@@ -2,6 +2,7 @@ import * as React from 'react'
 import rehypeReact from 'rehype-react'
 import * as Heading from '../styles/MD/headings'
 import * as Body from '../styles/MD/body'
+import Link from './Link'
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -14,6 +15,7 @@ const renderAst = new rehypeReact({
     h5: Heading.H5,
     h6: Heading.H6,
     p: Body.P,
+    a: Link,
     blockquote: Body.BQ,
     table: Body.Table,
   }
