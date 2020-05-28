@@ -63,7 +63,7 @@ interface PageInt {
   }
 }
 
-const HeaderComponent = ({ location, context }: Props) => {
+const HeaderComponent = ({ location }: Props) => {
 
   const data = useStaticQuery(
     graphql`
@@ -88,7 +88,7 @@ query {
 `
   )
 
-  const title = `Alex Edwards | ${location.pathname === '/' ? data.contentfulSiteMetadata.description : context?.siteTitle}`
+  const title = `Alex Edwards${location.pathname === '/' ? ` | ${data.contentfulSiteMetadata.description}` : ''}`
 
 
   return (

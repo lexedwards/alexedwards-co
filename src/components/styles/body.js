@@ -3,14 +3,15 @@ import styled from 'styled-components'
 const P = styled.p`
 font-size: ${props => props.theme.fontSize.sm};
 line-height: 1.5;
+margin-top: 0;
 `
 
 const OL = styled.ol`
-margin: 1.5rem 0;
+margin: 0 0 1.5rem 0;
 `
 
 const UL = styled.ul`
-margin: 1.5rem 0;
+margin: 0 0 1.5rem 0;
 `
 
 const LI = styled.li`
@@ -25,9 +26,9 @@ padding-left: 1rem;
 
 const Table = styled.table`
 border: none;
-padding: 1rem;
+margin: 2rem;
 border-collapse: collapse;
-width: 100%;
+width: calc(100% - 4rem);
 tbody > tr {
   border-top: 1px solid ${props => props.theme.neutral.n100};
   border-bottom: 1px solid ${props => props.theme.neutral.n100};

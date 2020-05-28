@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import renderAst from '../components/utils/Rehype'
 import { Helmet } from 'react-helmet'
 import { PostQuery } from '../../graphql-types'
+import { H1 } from '../components/styles/headings'
 
 
 export const pageQuery = graphql`
@@ -31,6 +32,7 @@ function PostTemplate({ data, scope, pageContext }: PostTemplate) {
       <Helmet>
         <title>{data.page?.title} || Alex Edwards</title>
       </Helmet>
+      <H1>{data.page?.title}</H1>
       {renderAst(data?.page?.body?.childMarkdownRemark?.htmlAst)}
     </>
   )

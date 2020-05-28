@@ -1,7 +1,7 @@
 import * as React from 'react'
 import rehypeReact from 'rehype-react'
-import * as Heading from '../styles/MD/headings'
-import * as Body from '../styles/MD/body'
+import * as Heading from '../styles/headings'
+import * as Body from '../styles/body'
 import Link from './Link'
 
 const renderAst = new rehypeReact({

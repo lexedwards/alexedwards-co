@@ -28,15 +28,17 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 body {
-  margin: 1.25rem;
+  margin: 0 1.5rem;
   @media(min-width: 40rem) {
-    margin: 0;
+    margin: 0 1rem;
   }
-  background : linear-gradient(175deg,hsl(0,0%,94%) 0%,hsl(0,0%,94%) 75vh,rgb(255, 255, 255) calc(75vh + 1px),rgb(255, 255, 255) 100%);
+  color : ${props => props.theme.neutral.n900};
+  // background : linear-gradient(175deg,hsl(0,0%,94%) 0%,hsl(0,0%,94%) 75vh,rgb(255, 255, 255) calc(75vh + 1px),rgb(255, 255, 255) 100%);
 }
 h1,h2,h3,h4,h5,h6,th {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
+  margin-top: 0;
 }
 p, p > a, li, td {
   font-family: 'Roboto', sans-serif;
@@ -67,6 +69,37 @@ button, a.button {
     border-color: hsla(212,100%,63%,0.5);
   }
 }
+img {
+  max-width: 100%;
+}
+
+.gatsby-highlight-code-line {
+  background-color: #454545;
+  display: block;
+  margin-right: -1rem;
+  margin-left: -1rem;
+  padding-right: 1rem;
+  padding-left: 0.75rem;
+  border-left: 0.25rem solid #f99;
+}
+
+.gatsby-highlight {
+  background-color: #2d2d2d;
+  border-radius: 0.3rem;
+  margin: 0.5em 0;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.gatsby-highlight pre[class*="language-"] {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  overflow: initial;
+  float: left;
+  min-width: 100%;
+}
+
 `
 
 export default GlobalStyles
