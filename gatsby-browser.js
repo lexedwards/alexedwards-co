@@ -4,7 +4,7 @@ const React = require('react')
 const Layout = require('./src/components/Layout').default
 require('prismjs/themes/prism-tomorrow.css')
 require("prismjs/plugins/line-numbers/prism-line-numbers.css")
-require("./src/styles/highlight.css")
+require("./src/styles/codeBlocks.css")
 
 exports.wrapPageElement = ({ element, props }) => {
   return <Layout {...props}>{element}</Layout>

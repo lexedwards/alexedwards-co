@@ -1,0 +1,74 @@
+/* Remark Code Titles */
+.gatsby-code-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+}
+.gatsby-code-title::before {
+  content: 'File: '
+}
+
+/* 
+
+Remark Code Button :: Still buggy, so removed the init
+
+*/
+
+.gatsby-code-button-container {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 0;
+  top: 3.4rem;
+  padding-right: 1rem;
+}
+
+.gatsby-code-button::after {
+  top: 1rem;
+  right: 1rem;
+  color: #ccc;
+}
+
+.gatsby-code-button-icon {
+  /* Inline with PrismJS Styling */
+  fill: #ccc; 
+}
+
+
+/* PrismJS Code Highlighting */
+
+.gatsby-highlight-code-line {
+  background-color: hsl(0,5%,19%);
+  display: block;
+  margin-right: -1em;
+  margin-left: -4em;
+  padding-right: 4em;
+  padding-left: 3.75em;
+  border-left: 0.25em solid hsl(206,98%,77%);
+}
+
+.gatsby-highlight {
+  background-color: hsl(0,5%,10%);
+  border-radius: 0.5em;
+  margin: 0.5em 0;
+  padding: 1em;
+  overflow: auto;
+}
+
+.gatsby-highlight pre[class*="language-"] {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  padding-left: 3em;
+  overflow: initial;
+  float: left;
+  min-width: 100%;
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em 0.4em;
+}
+
