@@ -73,33 +73,6 @@ img {
   max-width: 100%;
 }
 
-.gatsby-highlight-code-line {
-  background-color: ${props => props.theme.neutral.n800};
-  display: block;
-  margin-right: -1rem;
-  margin-left: -1rem;
-  padding-right: 1rem;
-  padding-left: 0.75rem;
-  border-left: 0.25rem solid hsl(206,99%,77%);
-}
-
-.gatsby-highlight {
-  background-color: ${props => props.theme.neutral.n900};
-  border-radius: 0.3rem;
-  margin: 0.5em 0;
-  padding: 1rem;
-  overflow: auto;
-}
-
-.gatsby-highlight pre[class*="language-"] {
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  overflow: initial;
-  float: left;
-  min-width: 100%;
-}
-
 `
 
 export default GlobalStyles
