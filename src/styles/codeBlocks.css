@@ -54,8 +54,22 @@ Remark Code Button :: Still buggy, so removed the init
   background-color: hsl(0,5%,10%);
   border-radius: 0.5em;
   margin: 0.5em 0;
-  padding: 1em;
+  padding: 2em 1em 1em 1em;
   overflow: auto;
+  position: relative;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+.gatsby-highlight::before {
+  position: absolute;
+  z-index: 100;
+  display: block;
+  top: 0;
+  left: 4rem;
+  padding: 0.25rem 0.5rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  font-size: 0.75rem;
 }
 
 .gatsby-highlight pre[class*="language-"] {
@@ -72,3 +86,62 @@ Remark Code Button :: Still buggy, so removed the init
   padding: 0.1em 0.4em;
 }
 
+.gatsby-highlight[data-language="shell"]::before{
+  content: 'shell';
+  background-color: hsl(210, 28.8%, 28.6%);
+  color: hsl(0,0%,95%);
+}
+
+.gatsby-highlight[data-language="js"]::before, .gatsby-highlight[data-language="javascript"]::before {
+  content: 'js' ;
+  background-color: hsl(53.4, 93.1%, 54.3%);
+  color: hsl(80, 3%, 19.4%) ;
+}
+
+.gatsby-highlight[data-language="html"]::before {
+  content: 'html' ;
+  background-color: hsl(12.3, 77.9%, 52.2%);
+  color: hsl(0, 0%, 0%) ;
+}
+
+.gatsby-highlight[data-language="css"]::before {
+  content: 'css' ;
+  background-color: hsl(206.8, 89.9%, 61%);
+  color: hsl(0, 0%, 5%) ;
+}
+
+.gatsby-highlight[data-language="graphql"]::before {
+  content: 'graphql' ;
+  background-color: hsl(339.8, 81.9%, 58.8%);
+  color: hsl(0, 0%, 0%) ;
+}
+
+.gatsby-highlight[data-language="json"]::before {
+  content: 'json' ;
+  background-color: hsl(42.8, 96.3%, 58%);
+  color: hsl(0, 0%, 0%) ;
+}
+
+.gatsby-highlight[data-language="jsx"]::before {
+  content: 'jsx' ;
+  background-color: hsl(186.8, 100%, 41.6%);
+  color: hsl(0, 0%, 0%) ;
+}
+
+.gatsby-highlight[data-language="markdown"]::before, .gatsby-highlight[data-language="md"]::before {
+  content: 'md' ;
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 95%) ;
+}
+
+.gatsby-highlight[data-language="mdx"]::before {
+  content: 'mdx' ;
+  background-color: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 0%) ;
+}
+
+.gatsby-highlight[data-language="ts"]::before, .gatsby-highlight[data-language="tsx"]::before {
+  content: 'ts' ;
+  background-color: hsl(201.2, 98.1%, 41.4%);
+  color: hsl(0, 0%, 0%) ;
+}
