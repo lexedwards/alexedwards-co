@@ -25,3 +25,7 @@
   float: left;
   min-width: 100%;
 }
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em 0.4em;
+}
