@@ -18,6 +18,11 @@ const LI = styled.li`
 line-height: 1.5;
 `
 
+const InlineLI = styled.li`
+line-height: 1.5;
+display: inline;
+`
+
 const BQ = styled.blockquote`
 font-size: ${props => props.theme.fontSize.sm};
 border-left: 0.4rem solid;
@@ -50,4 +55,4 @@ font-size: ${props => props.theme.fontSize.sm}
 `
 
 
-export { P, BQ, Table, TH, TD, OL, UL, LI }
+export { P, BQ, Table, TH, TD, OL, UL, LI, InlineLI }
