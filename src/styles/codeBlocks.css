@@ -86,10 +86,10 @@ Remark Code Button :: Still buggy, so removed the init
   padding: 0.1em 0.4em;
 }
 
-.gatsby-highlight[data-language="shell"]::before{
-  content: 'shell';
-  background-color: hsl(210, 28.8%, 28.6%);
-  color: hsl(0,0%,95%);
+.gatsby-highlight[data-language="bash"]::before{
+  content: 'bash';
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(120, 60.8%, 50%);
 }
 
 .gatsby-highlight[data-language="js"]::before, .gatsby-highlight[data-language="javascript"]::before {
@@ -136,6 +136,18 @@ Remark Code Button :: Still buggy, so removed the init
 
 .gatsby-highlight[data-language="mdx"]::before {
   content: 'mdx' ;
+  background-color: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 0%) ;
+}
+
+.gatsby-highlight[data-language="shell"]::before{
+  content: 'shell';
+  background-color: hsl(210, 28.8%, 28.6%);
+  color: hsl(0,0%,95%);
+}
+
+.gatsby-highlight[data-language="text"]::before {
+  content: 'text' ;
   background-color: hsl(0, 0%, 95%);
   color: hsl(0, 0%, 0%) ;
 }
