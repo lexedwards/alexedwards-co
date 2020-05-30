@@ -5,13 +5,14 @@ async function createPosts({ graphql, actions }) {
 
   const { errors, data } = await graphql(`
     {
-      allContentfulPost {
+      allContentfulPost(sort: {fields: meta___entryDate, order: DESC}) {
         edges {
           node {
             id
             title
             meta {
               slug
+              entryDate
             }
           }
         }
@@ -22,7 +23,9 @@ async function createPosts({ graphql, actions }) {
     throw new Error('this is an error!', errors)
   }
   const posts = data.allContentfulPost.edges
-  posts.forEach(post => {
+  posts.forEach((post, i) => {
+    const prev = posts[i + 1];
+    const next = posts[i - 1];
     actions.createPage({
       path: post.node.meta.slug,
       component: template,
@@ -30,7 +33,9 @@ async function createPosts({ graphql, actions }) {
         id: post.node.id,
         siteTitle: post.node.title,
         slug: post.node.meta.slug,
-        collection: 'post'
+        collection: 'post',
+        prev,
+        next,
       }
     })
   })

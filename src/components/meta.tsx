@@ -1,30 +1,31 @@
 import * as React from 'react'
 import Img, { FluidObject } from 'gatsby-image'
 import { H1 } from './styles/headings'
-import { UL, InlineLI, P } from './styles/body'
+import { InlineList, P, LI } from './styles/body'
 
 interface MetaI {
   entryDate?: string
   tags?: string[]
+  readingTime?: string
   fluidImage?: FluidObject
   title: string
 }
 
 
-function MetaTile({ entryDate, tags, fluidImage, title }: MetaI): React.ReactElement {
+function MetaTile({ entryDate, tags, fluidImage, title, readingTime }: MetaI): React.ReactElement {
   return (
     <>
-      <Img fluid={fluidImage as FluidObject} />
+      {fluidImage && (<Img fluid={fluidImage as FluidObject} />)}
       <div>
         <H1>{title}</H1>
-        <P>{entryDate}</P>
-        <UL>
+        <P>{entryDate} : {readingTime}</P>
+        <InlineList>
           {tags?.map(tag => (
-            <InlineLI key={tag as string}>
+            <LI key={tag as string}>
               {tag}
-            </InlineLI>
+            </LI>
           ))}
-        </UL>
+        </InlineList>
       </div>
     </>
   )

@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 import { PostQuery } from '../../graphql-types'
 import MetaTile from '../components/meta'
 import { FluidObject } from 'gatsby-image'
+import ContentNav, { QNode } from '../components/ContentNav'
 
 
 export const pageQuery = graphql`
@@ -37,6 +38,11 @@ query Post($id: String!) {
     body {
       childMarkdownRemark {
         htmlAst
+        fields {
+          readingTime {
+            text
+          }
+        }
       }
     }
   }
@@ -46,7 +52,13 @@ query Post($id: String!) {
 interface PostTemplate {
   data: PostQuery
   scope: unknown
-  pageContext: unknown
+  pageContext: {
+    id?: string
+    slug?: string
+    collection?: string
+    prev?: QNode
+    next?: QNode
+  }
 }
 
 function PostTemplate({ data, scope, pageContext }: PostTemplate) {
@@ -62,8 +74,10 @@ function PostTemplate({ data, scope, pageContext }: PostTemplate) {
         tags={data.page?.meta?.tags as string[]}
         fluidImage={data.page?.meta?.thumbnail?.fluid as FluidObject}
         title={data.page?.title as string}
+        readingTime={data.page?.body?.childMarkdownRemark?.fields?.readingTime?.text as string}
       />
       {renderAst(data?.page?.body?.childMarkdownRemark?.htmlAst)}
+      <ContentNav prefix={''} prev={pageContext?.prev} next={pageContext?.next} />
     </>
   )
 }

@@ -14,13 +14,21 @@ const UL = styled.ul`
 margin: 0 0 1.5rem 0;
 `
 
-const LI = styled.li`
-line-height: 1.5;
+const InlineList = styled.ul`
+display: flex;
+padding: 0;
+> li {
+  list-style: none;
+  font-weight: 600;
+  color: ${props => props.theme.neutral.n600};
+  &:not(:last-child) {
+    margin-right: 1rem
+  }
+}
 `
 
-const InlineLI = styled.li`
+const LI = styled.li`
 line-height: 1.5;
-display: inline;
 `
 
 const BQ = styled.blockquote`
@@ -55,4 +63,4 @@ font-size: ${props => props.theme.fontSize.sm}
 `
 
 
-export { P, BQ, Table, TH, TD, OL, UL, LI, InlineLI }
+export { P, BQ, Table, TH, TD, OL, UL, LI, InlineList }

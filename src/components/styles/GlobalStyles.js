@@ -51,6 +51,7 @@ pre {
 a {
   text-decoration: none;
   color: hsl(199,88%,30%);
+  cursor: pointer;
 }
 button, a.button {
   font-family: 'Poppins', sans-serif;
