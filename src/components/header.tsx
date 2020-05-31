@@ -105,7 +105,7 @@ query {
             if (!page.node.meta.slug) return undefined;
             if (page.node.meta.slug === 'contact') return (
               <Link
-                to={`/${page.node.meta.slug}`}
+                to={`/${page.node.meta.slug}/`}
                 className="button"
                 key={page.node.meta.slug}
                 role="button">
@@ -113,7 +113,7 @@ query {
               </Link>
             )
             return (
-              <Link to={`/${page.node.meta.slug}`} key={page.node.title}>
+              <Link to={`/${page.node.meta.slug}/`} key={page.node.title}>
                 <p>
                   {page.node.title}
                 </p>

@@ -42,10 +42,10 @@ function ContentNav({ prefix = '', prev, next }: ContentI) {
   return (
     <Nav>
       {prev && (
-        <Link className="prev" to={`${prefix}/${prev.node.meta.slug}`}>{`← ${prev.node.title}`}</Link>
+        <Link className="prev" to={`${prefix}/${prev.node.meta.slug}/`}>{`← ${prev.node.title}`}</Link>
       )}
       {next && (
-        <Link className="next" to={`${prefix}/${next.node.meta.slug}`}>{`${next.node.title} →`}</Link>
+        <Link className="next" to={`${prefix}/${next.node.meta.slug}/`}>{`${next.node.title} →`}</Link>
       )}
     </Nav>
   )
