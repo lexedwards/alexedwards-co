@@ -50,6 +50,8 @@ tbody > tr {
 }
 td, th {
   padding: 0.75rem;
+  word-wrap: anywhere;
+  hyphens: auto;
 }
 `
 const TH = styled.th`
