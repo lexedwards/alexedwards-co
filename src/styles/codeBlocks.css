@@ -5,9 +5,18 @@
   font-size: 1rem;
   line-height: 1.5;
   margin-top: 1.5rem;
+  padding: 1em 1em 1em 4em;
+  color: hsl(0,0%,60%);
+  background-color: hsl(0,5%,10%);
+  border-bottom: 1px solid  hsl(0,0%,30%);
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
 }
-.gatsby-code-title::before {
-  content: 'File: '
+
+.gatsby-code-title + .gatsby-highlight {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top:0;
 }
 
 /* 
@@ -53,7 +62,7 @@ Remark Code Button :: Still buggy, so removed the init
 .gatsby-highlight {
   background-color: hsl(0,5%,10%);
   border-radius: 0.5em;
-  margin: 0.5em 0;
+  margin: 1.5em 0;
   padding: 2em 1em 1em 1em;
   overflow: auto;
   position: relative;
@@ -92,40 +101,40 @@ Remark Code Button :: Still buggy, so removed the init
   color: hsl(120, 60.8%, 50%);
 }
 
+.gatsby-highlight[data-language="css"]::before {
+  content: 'css' ;
+  background-color: hsl(206.8, 89.9%, 61%);
+  color: hsl(0, 0%, 10%) ;
+}
+
+.gatsby-highlight[data-language="graphql"]::before {
+  content: 'graphql' ;
+  background-color: hsl(339.8, 81.9%, 58.8%);
+  color: hsl(0, 0%, 10%) ;
+}
+
+.gatsby-highlight[data-language="html"]::before {
+  content: 'html' ;
+  background-color: hsl(12.3, 77.9%, 52.2%);
+  color: hsl(0, 0%, 10%) ;
+}
+
 .gatsby-highlight[data-language="js"]::before, .gatsby-highlight[data-language="javascript"]::before {
   content: 'js' ;
   background-color: hsl(53.4, 93.1%, 54.3%);
   color: hsl(80, 3%, 19.4%) ;
 }
 
-.gatsby-highlight[data-language="html"]::before {
-  content: 'html' ;
-  background-color: hsl(12.3, 77.9%, 52.2%);
-  color: hsl(0, 0%, 0%) ;
-}
-
-.gatsby-highlight[data-language="css"]::before {
-  content: 'css' ;
-  background-color: hsl(206.8, 89.9%, 61%);
-  color: hsl(0, 0%, 5%) ;
-}
-
-.gatsby-highlight[data-language="graphql"]::before {
-  content: 'graphql' ;
-  background-color: hsl(339.8, 81.9%, 58.8%);
-  color: hsl(0, 0%, 0%) ;
-}
-
 .gatsby-highlight[data-language="json"]::before {
   content: 'json' ;
   background-color: hsl(42.8, 96.3%, 58%);
-  color: hsl(0, 0%, 0%) ;
+  color: hsl(0, 0%,10%) ;
 }
 
 .gatsby-highlight[data-language="jsx"]::before {
   content: 'jsx' ;
   background-color: hsl(186.8, 100%, 41.6%);
-  color: hsl(0, 0%, 0%) ;
+  color: hsl(0, 0%, 10%) ;
 }
 
 .gatsby-highlight[data-language="markdown"]::before, .gatsby-highlight[data-language="md"]::before {
@@ -137,7 +146,13 @@ Remark Code Button :: Still buggy, so removed the init
 .gatsby-highlight[data-language="mdx"]::before {
   content: 'mdx' ;
   background-color: hsl(0, 0%, 95%);
-  color: hsl(0, 0%, 0%) ;
+  color: hsl(0, 0%, 10%) ;
+}
+
+.gatsby-highlight[data-language="scss"]::before{
+  content: 'scss';
+  background-color: hsl(329.7, 52.7%, 60.2%);
+  color: hsl(0,0%,10%);
 }
 
 .gatsby-highlight[data-language="shell"]::before{
@@ -149,11 +164,11 @@ Remark Code Button :: Still buggy, so removed the init
 .gatsby-highlight[data-language="text"]::before {
   content: 'text' ;
   background-color: hsl(0, 0%, 95%);
-  color: hsl(0, 0%, 0%) ;
+  color: hsl(0, 0%, 10%) ;
 }
 
 .gatsby-highlight[data-language="ts"]::before, .gatsby-highlight[data-language="tsx"]::before {
   content: 'ts' ;
   background-color: hsl(201.2, 98.1%, 41.4%);
-  color: hsl(0, 0%, 0%) ;
+  color: hsl(0, 0%, 10%) ;
 }
