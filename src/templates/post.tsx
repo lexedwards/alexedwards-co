@@ -75,7 +75,7 @@ function PostTemplate({ data, pageContext }: PostTemplate) {
         entryDate={data.page?.meta?.entryDate}
         tags={data.page?.meta?.tags as string[]}
         fluidImage={data.page?.meta?.thumbnail?.fluid as FluidObject}
-        title={data.page?.title as string}
+        title={`${data.page?.title}${data.page?.series && ` | ${data.page.series.title}`}`}
         readingTime={data.page?.body?.childMarkdownRemark?.fields?.readingTime?.text as string}
       />
       {data.page?.series && (
