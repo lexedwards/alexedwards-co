@@ -1,7 +1,8 @@
 import * as React from 'react'
 import Img, { FluidObject } from 'gatsby-image'
 import { H1 } from './styles/headings'
-import { InlineList, P, LI } from './styles/body'
+import { P } from './styles/body'
+import styled from 'styled-components'
 
 interface MetaI {
   entryDate?: string
@@ -11,22 +12,19 @@ interface MetaI {
   title: string
 }
 
+const Dive = styled.div`
+margin-top: 1.5rem;
+`
 
-function MetaTile({ entryDate, tags, fluidImage, title, readingTime }: MetaI): React.ReactElement {
+
+function MetaTile({ entryDate, fluidImage, title, readingTime }: MetaI): React.ReactElement {
   return (
     <>
       {fluidImage && (<Img fluid={fluidImage as FluidObject} />)}
-      <div>
+      <Dive>
         <H1>{title}</H1>
         <P>{entryDate} : {readingTime}</P>
-        <InlineList>
-          {tags?.map(tag => (
-            <LI key={tag as string}>
-              {tag}
-            </LI>
-          ))}
-        </InlineList>
-      </div>
+      </Dive>
     </>
   )
 }
