@@ -6,6 +6,7 @@ import { PostQuery } from '../../graphql-types'
 import MetaTile from '../components/meta'
 import { FluidObject } from 'gatsby-image'
 import ContentNav, { QNode } from '../components/ContentNav'
+import SeriesBlock, { PostArray } from '../components/SeriesBlock'
 
 
 export const pageQuery = graphql`
@@ -13,6 +14,7 @@ query Post($id: String!) {
   page : contentfulPost(id: {eq: $id}) {
     title
     meta {
+      id
       entryDate(fromNow : true)
       desc {
         desc
@@ -30,6 +32,7 @@ query Post($id: String!) {
       post {
         title
         meta {
+          id
           slug
           entryDate
         }
@@ -61,8 +64,7 @@ interface PostTemplate {
   }
 }
 
-function PostTemplate({ data, scope, pageContext }: PostTemplate) {
-  console.log('data:', data, 'scope:', scope, `context:`, pageContext)
+function PostTemplate({ data, pageContext }: PostTemplate) {
 
   return (
     <>
@@ -76,6 +78,12 @@ function PostTemplate({ data, scope, pageContext }: PostTemplate) {
         title={data.page?.title as string}
         readingTime={data.page?.body?.childMarkdownRemark?.fields?.readingTime?.text as string}
       />
+      {data.page?.series && (
+        <SeriesBlock
+          postId={data.page?.meta?.id as string}
+          series={data.page.series as { title: string; post: PostArray[] }}
+        />
+      )}
       {renderAst(data?.page?.body?.childMarkdownRemark?.htmlAst)}
       <ContentNav prefix={''} prev={pageContext?.prev} next={pageContext?.next} />
     </>
