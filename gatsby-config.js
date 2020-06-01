@@ -36,6 +36,16 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-code-titles`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true,
+              aliases: {
+                sh: 'bash',
+              },
+            }
+          },
           {
             resolve: `gatsby-remark-images-contentful`,
             options: {
@@ -43,15 +53,11 @@ module.exports = {
             }
           },
           {
-            resolve: `gatsby-remark-prismjs`
+            resolve: `gatsby-remark-copy-linked-files`
           },
           `gatsby-remark-reading-time`,
         ]
       }
-    },
-    {
-      resolve: `gatsby-plugin-catch-links`,
-      options: {}
     },
     `gatsby-plugin-styled-components`,
     {

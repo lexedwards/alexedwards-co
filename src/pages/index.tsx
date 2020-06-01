@@ -5,16 +5,8 @@ import styled from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
 import { HomepageQuery } from '../../graphql-types'
 import renderAst from '../components/utils/Rehype'
+import { H1, H2, H5 } from '../components/styles/headings'
 
-const H1 = styled.h1`
-font-size: ${props => props.theme.fontSize.xxxlg};
-`
-const H2 = styled.h2`
-font-size: ${props => props.theme.fontSize.xxlg};
-`
-const H5 = styled.h5`
-font-size: ${props => props.theme.fontSize.md};
-`
 const Color = styled.span`
 color: hsl(199,88%,30%);
 `

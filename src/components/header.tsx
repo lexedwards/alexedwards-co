@@ -1,4 +1,5 @@
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
+import Link from './utils/Link'
 import * as React from 'react'
 import styled from 'styled-components'
 
@@ -62,7 +63,7 @@ interface PageInt {
   }
 }
 
-const HeaderComponent = ({ location, context }: Props) => {
+const HeaderComponent = ({ location }: Props) => {
 
   const data = useStaticQuery(
     graphql`
@@ -87,7 +88,7 @@ query {
 `
   )
 
-  const title = `Alex Edwards | ${location.pathname === '/' ? data.contentfulSiteMetadata.description : context?.siteTitle}`
+  const title = `Alex Edwards${location.pathname === '/' ? ` | ${data.contentfulSiteMetadata.description}` : ''}`
 
 
   return (
@@ -96,9 +97,6 @@ query {
 
         <Link
           to="/"
-          style={{
-            textDecoration: `none`,
-          }}
         >
           <H1>{title}</H1>
         </Link>
@@ -107,7 +105,7 @@ query {
             if (!page.node.meta.slug) return undefined;
             if (page.node.meta.slug === 'contact') return (
               <Link
-                to={`/${page.node.meta.slug}`}
+                to={`/${page.node.meta.slug}/`}
                 className="button"
                 key={page.node.meta.slug}
                 role="button">
@@ -115,7 +113,7 @@ query {
               </Link>
             )
             return (
-              <Link to={`/${page.node.meta.slug}`} key={page.node.title}>
+              <Link to={`/${page.node.meta.slug}/`} key={page.node.title}>
                 <p>
                   {page.node.title}
                 </p>
