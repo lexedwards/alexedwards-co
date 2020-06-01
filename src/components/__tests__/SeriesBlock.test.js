@@ -61,11 +61,11 @@ test('Renders the Block', () => {
   )
   const header = getByRole('heading')
   expect(header).toMatchInlineSnapshot(`
-    <h4
-      class="sc-AxhCb bUsZlQ"
+    <h6
+      class="sc-AxiKw hrmHWS"
     >
       Series Title
-    </h4>
+    </h6>
   `)
 })
 
@@ -75,11 +75,11 @@ test('Renders 3 elements, highlighting current', () => {
   )
   const header = getByRole('heading')
   expect(header).toMatchInlineSnapshot(`
-    <h4
-      class="sc-AxhCb bUsZlQ"
+    <h6
+      class="sc-AxiKw hrmHWS"
     >
       Series Title
-    </h4>
+    </h6>
   `)
 
   const links = getAllByRole('link')
@@ -94,19 +94,34 @@ test('Renders 3 elements with an accordian between', () => {
   expect(links).toMatchInlineSnapshot(`
     Array [
       <a
-        href="/series3"
+        class=""
+        href="/series1/"
       >
-        Series #3
+        <p
+          class="sc-AxjAm jkJDfQ"
+        >
+          1.  Series #1
+        </p>
       </a>,
       <a
-        href="/series2"
+        class=""
+        href="/series2/"
       >
-        Series #2
+        <p
+          class="sc-AxjAm jkJDfQ"
+        >
+          2.  Series #2
+        </p>
       </a>,
       <a
-        href="/series1"
+        class="SeriesActive"
+        href="/series3/"
       >
-        Series #1
+        <p
+          class="sc-AxjAm jkJDfQ"
+        >
+          3.  Series #3
+        </p>
       </a>,
     ]
   `)
