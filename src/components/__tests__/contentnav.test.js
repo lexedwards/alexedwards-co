@@ -44,15 +44,17 @@ test('Renders 2 links', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <nav
-        class="sc-AxjAm ssodY"
+        class="sc-AxjAm hjpTAW"
       >
         <a
-          href="/testscript"
+          class="prev"
+          href="/testscript/"
         >
           ← Testscipt
         </a>
         <a
-          href="/2020-was-a-none-starter-for-me"
+          class="next"
+          href="/2020-was-a-none-starter-for-me/"
         >
           2020 was a Non-Starter for Me →
         </a>

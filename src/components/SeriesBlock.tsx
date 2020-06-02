@@ -48,9 +48,9 @@ max-width: 30rem;
 }
 `
 
-const H6 = styled.h6`
-font-size: 1rem;
-line-height: 1.5;
+const H5 = styled.h5`
+font-size: ${props => props.theme.fontSize.md};
+line-height: 1.2;
 padding: 1rem;
 margin: 0;
 `
@@ -93,7 +93,7 @@ function SeriesBlock({ postId, series }: SeriesI) {
     const [collapsed, setShowAll] = React.useState(true);
 
     <SeriesFrame>
-      <H6>{series.title}</H6>
+      <H5>{series.title}</H5>
       <Link
         to={`/${postsInOrder[0].meta.slug}/`}
         className={(0 === idx) ? 'SeriesActive' : ''}
@@ -137,7 +137,7 @@ function SeriesBlock({ postId, series }: SeriesI) {
   // If (i <= 4) return [1,2,3,4]
   return (
     <SeriesFrame>
-      <H6>{series.title}</H6>
+      <H5>{series.title}</H5>
       {postsInOrder.map((p, i) => (
         <Link
           to={`/${p.meta.slug}/`}

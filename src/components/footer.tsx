@@ -58,7 +58,7 @@ query{
   allContentfulAuthorSocialLinks {
     edges {
       node {
-        devTo
+        dev
         github
         instagram
         linkedin

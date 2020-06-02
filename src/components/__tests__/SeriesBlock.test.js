@@ -61,11 +61,11 @@ test('Renders the Block', () => {
   )
   const header = getByRole('heading')
   expect(header).toMatchInlineSnapshot(`
-    <h6
-      class="sc-AxiKw hrmHWS"
+    <h5
+      class="sc-AxiKw gSrnGH"
     >
       Series Title
-    </h6>
+    </h5>
   `)
 })
 
@@ -75,11 +75,11 @@ test('Renders 3 elements, highlighting current', () => {
   )
   const header = getByRole('heading')
   expect(header).toMatchInlineSnapshot(`
-    <h6
-      class="sc-AxiKw hrmHWS"
+    <h5
+      class="sc-AxiKw gSrnGH"
     >
       Series Title
-    </h6>
+    </h5>
   `)
 
   const links = getAllByRole('link')

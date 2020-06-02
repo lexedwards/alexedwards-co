@@ -51,7 +51,7 @@ type pageEdges = {
 const Main = styled.main`
 margin: 0 auto;
 max-width: 960px;
-min-height: calc(80 * var(--vh));
+min-height: calc(50 * var(--vh));
 `
 
 function Layout({
