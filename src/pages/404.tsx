@@ -1,10 +1,23 @@
-import React from 'react'
+import * as React from 'react'
+import Link from '../components/utils/Link'
+import { Helmet } from 'react-helmet'
+import { H1 } from '../components/styles/headings'
 
-const NotFoundPage = () => (
-  <>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </>
-)
+const Contact = () => {
 
-export default NotFoundPage
+  return (
+    <>
+      <Helmet>
+        <title>Whoops!</title>
+      </Helmet>
+      <div>
+        <H1>Whoops!</H1>
+        <p>I&apos;m not sure what you&apos;re looking for; but I doubt it was this</p>
+        <Link to="/">Take me home</Link>
+      </div>
+    </>
+  )
+
+}
+
+export default Contact
