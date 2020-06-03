@@ -38,6 +38,8 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.8.3",
     "@babel/types": "^7.9.6",
+    "@cypress/browserify-preprocessor": "^3.0.0",
+    "@cypress/code-coverage": "^3.8.1",
     "@testing-library/cypress": "^6.0.0",
     "@testing-library/jest-dom": "^5.7.0",
     "@testing-library/react": "^10.0.4",
@@ -55,6 +57,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.5.1",
+    "babel-plugin-istanbul": "^6.0.0",
     "babel-plugin-styled-components": "^1.10.7",
     "babel-preset-gatsby": "^0.4.2",
     "cypress": "^4.5.0",
@@ -91,6 +94,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "setup": "npm install && npm run validate",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
@@ -102,14 +106,28 @@
     "test:watch": "jest --watch",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
     "cy:run": "cypress run",
+    "cy:serve": "cypress run -c 'baseUrl=http://localhost:9000'",
     "cy:open": "cypress open",
     "test:e2e": "is-ci \"test:e2e:run\" \"test:e2e:dev\"",
     "pretest:e2e:run": "npm run build",
-    "test:e2e:run": "start-server-and-test serve http://localhost:9000 cy:run",
+    "test:e2e:run": "start-server-and-test serve http://localhost:9000 cy:serve",
+    "posttest:e2e:run": "npm run report:combined",
     "test:e2e:dev": "start-server-and-test develop http://localhost:8000 cy:open",
     "type-check": "tsc --pretty --noEmit",
     "lint": "jest --config test/jest.lint.js",
-    "validate": "npm run test:coverage && npm run test:e2e:run"
+    "validate": "npm run test:coverage && npm run test:e2e:run",
+    "precopy:reports": "mkdir coverage/reports || true",
+    "copy:reports": "cp coverage/cypress-coverage/coverage-final.json coverage/reports/from-cypress.json && cp coverage/jest-coverage/coverage-final.json coverage/reports/from-jest.json",
+    "precombine:reports": "npm run copy:reports && mkdir .nyc_output || true",
+    "combine:reports": "npx nyc merge coverage/reports && mv coverage.json .nyc_output/out.json",
+    "prereport:combined": "npm run combine:reports",
+    "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage"
+  },
+  "nyc": {
+    "report-dir": "coverage/cypress-coverage",
+    "include": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ]
   },
   "repository": {
     "type": "git",
