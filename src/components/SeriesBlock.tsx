@@ -91,46 +91,48 @@ function SeriesBlock({ postId, series }: SeriesI) {
     const [idx,] = currentInfo(postsInOrder, postId)
     const [collapsed, setShowAll] = React.useState(true);
 
-    <SeriesFrame>
-      <H5>{series.title}</H5>
-      <Link
-        to={`/${postsInOrder[0].meta.slug}/`}
-        className={(0 === idx) ? 'SeriesActive' : ''}
-      >
-        <Linkframe>{`1. ${postsInOrder[0].title}`}</Linkframe>
-      </Link>
-      <Link
-        to={`/${postsInOrder[1].meta.slug}/`}
-        className={(1 === idx) ? 'SeriesActive' : ''}
-      >
-        <Linkframe>{`2. ${postsInOrder[1].title}`}</Linkframe>
-      </Link>
-      {collapsed ? (
-        <p onClick={() => setShowAll(false)}>…</p>
-      ) : (
-          postsInOrder.slice(2, -2).map((p, i) => {
-            <Link
-              to={`/${p.meta.slug}/`}
-              key={i}
-              className={(p.meta.id === postId) ? 'SeriesActive' : ''}
-            >
-              <Linkframe>{`${i + 1}.  ${p.title}`}</Linkframe>
-            </Link>
-          })
-        )}
-      <Link
-        to={`/${postsInOrder[postsInOrder.length - 1].meta.slug}/`}
-        className={(postsInOrder.length === idx) ? 'SeriesActive' : ''}
-      >
-        <Linkframe>{`${postsInOrder.length}. ${postsInOrder[postsInOrder.length - 1].title}`}</Linkframe>
-      </Link>
-      <Link
-        to={`/${postsInOrder[postsInOrder.length].meta.slug}/`}
-        className={(postsInOrder.length + 1 === idx) ? 'SeriesActive' : ''}
-      >
-        <Linkframe>{`${postsInOrder.length + 1}. ${postsInOrder[postsInOrder.length].title}`}</Linkframe>
-      </Link>
-    </SeriesFrame>
+    return (
+      <SeriesFrame>
+        <H5>{series.title}</H5>
+        <Link
+          to={`/${postsInOrder[0].meta.slug}/`}
+          className={(0 === idx) ? 'SeriesActive' : ''}
+        >
+          <Linkframe>{`1. ${postsInOrder[0].title}`}</Linkframe>
+        </Link>
+        <Link
+          to={`/${postsInOrder[1].meta.slug}/`}
+          className={(1 === idx) ? 'SeriesActive' : ''}
+        >
+          <Linkframe>{`2. ${postsInOrder[1].title}`}</Linkframe>
+        </Link>
+        {collapsed ? (
+          <p onClick={() => setShowAll(false)}>…</p>
+        ) : (
+            postsInOrder.slice(2, -2).map((p, i) => {
+              <Link
+                to={`/${p.meta.slug}/`}
+                key={i}
+                className={(p.meta.id === postId) ? 'SeriesActive' : ''}
+              >
+                <Linkframe>{`${i + 1}.  ${p.title}`}</Linkframe>
+              </Link>
+            })
+          )}
+        <Link
+          to={`/${postsInOrder[postsInOrder.length - 2].meta.slug}/`}
+          className={(postsInOrder.length - 2 === idx) ? 'SeriesActive' : ''}
+        >
+          <Linkframe>{`${postsInOrder.length}. ${postsInOrder[postsInOrder.length - 2].title}`}</Linkframe>
+        </Link>
+        <Link
+          to={`/${postsInOrder[postsInOrder.length - 1].meta.slug}/`}
+          className={(postsInOrder.length - 1 === idx) ? 'SeriesActive' : ''}
+        >
+          <Linkframe>{`${postsInOrder.length}. ${postsInOrder[postsInOrder.length - 1].title}`}</Linkframe>
+        </Link>
+      </SeriesFrame>
+    )
   }
 
   // If (i <= 4) return [1,2,3,4]

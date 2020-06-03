@@ -23,7 +23,7 @@ function IconLoader({ icon }: Loader) {
     case 'twitter':
       return (<Twit />)
     default:
-      return (<p>{icon} can not be found</p>)
+      return (<p>{`${icon} icon can not be found`}</p>)
   }
 }
 

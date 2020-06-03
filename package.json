@@ -123,12 +123,6 @@
     "prereport:combined": "npm run combine:reports",
     "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage"
   },
-  "nyc": {
-    "report-dir": "coverage/cypress-coverage",
-    "include": [
-      "src/**/*.{js,jsx,ts,tsx}"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lexedwards/starter-cypr-jest-ts"
