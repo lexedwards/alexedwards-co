@@ -56,7 +56,6 @@ margin: 0;
 `
 
 function sortByEntryDate(arr: PostArray[]): PostArray[] {
-  console.log(arr)
   arr.sort((a, b) => {
     const aDate = a.meta.entryDate as string
     const bDate = b.meta.entryDate as string
