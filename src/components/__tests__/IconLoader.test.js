@@ -1,7 +1,7 @@
 import * as React from 'react'
 import render from 'render'
 import cases from 'jest-in-case'
-import IconLoader from '../socialIcons'
+import IconLoader from '../IconLoader'
 
 cases(
   'Returns (icon) or fail',

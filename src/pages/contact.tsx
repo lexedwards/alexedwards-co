@@ -5,7 +5,7 @@ import { H1 } from '../components/styles/headings'
 import renderAst from '../components/utils/Rehype'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import IconLoader from '../components/socialIcons'
+import IconLoader from '../components/IconLoader'
 import Link from '../components/utils/Link'
 
 interface ContactProps {
