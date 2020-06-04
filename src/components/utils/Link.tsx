@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link as GLink, navigate } from 'gatsby'
 
 interface LinkProps {
-  children: React.ReactElement | string;
+  children: React.ReactNode | string;
   className?: string;
   role?: string;
   activeClassName?: string;
