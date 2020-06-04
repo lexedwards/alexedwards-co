@@ -1,0 +1,6 @@
+{
+    "report-dir": "coverage/cypress-coverage",
+    "include": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ]
+}

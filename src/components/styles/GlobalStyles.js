@@ -10,7 +10,7 @@ const theme = {
     n500: `hsl(0,0%,46%)`,
     n600: `hsl(0,0%,36%)`,
     n700: `hsl(0,0%,27%)`,
-    n800: `hsl(0,10%,19%)`,
+    n800: `hsl(0,5%,19%)`,
     n900: `hsl(0,5%,10%)`,
   },
   fontSize: {
@@ -28,17 +28,19 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 body {
-  margin: 1.25rem;
+  margin: 0 1.5rem;
   @media(min-width: 40rem) {
-    margin: 0;
+    margin: 0 1rem;
   }
-  background : linear-gradient(175deg,hsl(0,0%,94%) 0%,hsl(0,0%,94%) 75vh,rgb(255, 255, 255) calc(75vh + 1px),rgb(255, 255, 255) 100%);
+  color : ${props => props.theme.neutral.n900};
+  // background : linear-gradient(175deg,hsl(0,0%,94%) 0%,hsl(0,0%,94%) 75vh,rgb(255, 255, 255) calc(75vh + 1px),rgb(255, 255, 255) 100%);
 }
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,th {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
+  margin-top: 0;
 }
-p, p > a {
+p, p > a, li, td {
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
   font-size: 1rem;
@@ -49,6 +51,7 @@ pre {
 a {
   text-decoration: none;
   color: hsl(199,88%,30%);
+  cursor: pointer;
 }
 button, a.button {
   font-family: 'Poppins', sans-serif;
@@ -67,6 +70,10 @@ button, a.button {
     border-color: hsla(212,100%,63%,0.5);
   }
 }
+img {
+  max-width: 100%;
+}
+
 `
 
 export default GlobalStyles
