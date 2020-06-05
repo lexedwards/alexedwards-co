@@ -2,6 +2,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Link from './utils/Link'
 import * as React from 'react'
 import styled from 'styled-components'
+import useWindowSize from '../Hooks/useWindowSize'
+import MobileNav from './MobileNav'
 
 
 const Header = styled.header`
@@ -65,6 +67,8 @@ interface PageInt {
 
 const HeaderComponent = ({ location }: Props) => {
 
+  const size = useWindowSize()
+
   const data = useStaticQuery(
     graphql`
 query {
@@ -72,9 +76,10 @@ query {
     title
     description
   }
-  allContentfulPage(filter: { isTopLevel: { eq: true } }, sort: { fields: title }) {
+  allContentfulPage(filter: { isTopLevel: { eq: true } }, sort: { fields: index }) {
     edges {
       node {
+        index
         title
         meta {
               ...on ContentfulMeta {
@@ -92,38 +97,44 @@ query {
 
 
   return (
-    <Header>
-      <InnerHead>
-
-        <Link
-          to="/"
-        >
-          <H1>{title}</H1>
-        </Link>
-        <MenuLine>
-          {data.allContentfulPage.edges.map((page: PageInt) => {
-            if (!page.node.meta.slug) return undefined;
-            if (page.node.meta.slug === 'contact') return (
-              <Link
-                to={`/${page.node.meta.slug}/`}
-                className="button"
-                key={page.node.meta.slug}
-                role="button">
-                Say Hello
-              </Link>
-            )
-            return (
-              <Link to={`/${page.node.meta.slug}/`} key={page.node.title}>
-                <p>
-                  {page.node.title}
-                </p>
-              </Link>
-            )
-          }
+    <>
+      <Header>
+        <InnerHead>
+          <Link
+            to="/"
+          >
+            <H1>{title}</H1>
+          </Link>
+          {size.width && size.width >= 750 && (
+            <MenuLine>
+              {data.allContentfulPage.edges.map((page: PageInt) => {
+                if (!page.node.meta.slug) return undefined;
+                if (page.node.meta.slug === 'contact') return (
+                  <Link
+                    to={`/${page.node.meta.slug}`}
+                    className="button"
+                    key={page.node.meta.slug}
+                    role="button">
+                    Say Hello
+                  </Link>
+                )
+                return (
+                  <Link to={`/${page.node.meta.slug}`} key={page.node.title}>
+                    <p>
+                      {page.node.title}
+                    </p>
+                  </Link>
+                )
+              }
+              )}
+            </MenuLine>
           )}
-        </MenuLine>
-      </InnerHead>
-    </Header>
+        </InnerHead>
+      </Header>
+      {size.width && size.width < 750 && (
+        <MobileNav data={data.allContentfulPage.edges} location={location.pathname} />
+      )}
+    </>
   )
 }
 export default HeaderComponent

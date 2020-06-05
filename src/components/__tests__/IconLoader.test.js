@@ -19,6 +19,10 @@ cases(
     { name: 'Instagram Icon', icon: 'instagram' },
     { name: 'Linkedin Icon', icon: 'linkedin' },
     { name: 'Twitter Icon', icon: 'twitter' },
+    { name: 'Glasses Icon', icon: 'glasses' },
+    { name: 'Labs Icon', icon: 'labs' },
+    { name: 'Posts Icon', icon: 'posts' },
+    { name: 'Chat Icon', icon: 'chat' },
   ],
 )
 
