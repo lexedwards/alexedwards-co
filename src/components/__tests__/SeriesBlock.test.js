@@ -50,7 +50,7 @@ test('Renders 4 elements with an accordian between', () => {
   expect(links).toMatchInlineSnapshot(`
     Array [
       <a
-        href="/series1"
+        href="/series1/"
       >
         <p
           class="sc-AxjAm jkJDfQ"
@@ -59,7 +59,7 @@ test('Renders 4 elements with an accordian between', () => {
         </p>
       </a>,
       <a
-        href="/series2"
+        href="/series2/"
       >
         <p
           class="sc-AxjAm jkJDfQ"
@@ -68,7 +68,7 @@ test('Renders 4 elements with an accordian between', () => {
         </p>
       </a>,
       <a
-        href="/series8"
+        href="/series8/"
       >
         <p
           class="sc-AxjAm jkJDfQ"
@@ -77,7 +77,7 @@ test('Renders 4 elements with an accordian between', () => {
         </p>
       </a>,
       <a
-        href="/series9"
+        href="/series9/"
       >
         <p
           class="sc-AxjAm jkJDfQ"
