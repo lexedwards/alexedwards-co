@@ -20,13 +20,13 @@ function Link({ children, to, href, activeClassName, partiallyActive, ...rest }:
   if (!ref) throw new Error('Need something to link to!')
 
   if (internal.test(ref)) {
-    if (file.test(ref)) <a href={ref} download {...rest}>{children}</a>
-    if (local.test(ref)) <a onClick={() => { navigate(ref) }} {...rest}>{children}</a>
-    return (<GLink to={`${ref}/`} activeClassName={activeClassName} partiallyActive={partiallyActive} {...rest}>{children}</GLink>)
+    if (file.test(ref)) return (<a href={ref} download {...rest}>{children}</a>)
+    if (local.test(ref)) return (<a onClick={() => { navigate(ref) }} {...rest}>{children}</a>)
+    return (<GLink to={`${ref === '/' ? '' : ref}/`} activeClassName={activeClassName} partiallyActive={partiallyActive} {...rest}>{children}</GLink>)
   }
 
   // All else, this is an external link
-  return <a href={`${ref}`} target="_blank" rel="noreferrer" {...rest}>{children}</a>
+  return <a href={ref} target="_blank" rel="noreferrer" {...rest}>{children}</a>
 
 }
 
