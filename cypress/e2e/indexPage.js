@@ -4,10 +4,6 @@ describe('Navigate the Default Pages', () => {
     cy.injectAxe()
   })
 
-  it('Loads and goes to Page 2', () => {
-    cy.get('p > a').click()
-  })
-
   it('Has no A11y Violations', () => {
     cy.checkA11y(null, {
       runOnly: {
@@ -15,5 +11,17 @@ describe('Navigate the Default Pages', () => {
         values: ['wcag2a'],
       },
     })
+  })
+
+  it('Has Navigation', () => {
+    cy.findByRole('navigation')
+      .findByText(/about/i)
+      .click()
+    cy.findByRole('navigation')
+      .findByText(/say hello/i)
+      .click()
+    cy.findAllByRole('heading')
+      .findByText(/alex edwards/i)
+      .click()
   })
 })

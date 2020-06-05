@@ -67,6 +67,7 @@ const MobileNav: React.FC<MobileProps> = ({ data }) => {
       {data.map(item => {
 
         const slug = item.node.meta.slug
+        if (slug === 'contact') item.node.title = 'Say Hello'
         return (
           <Link to={`/${slug}`} key={slug} activeClassName='current' >
             <IconLoader icon={expectedItems[slug]} />
