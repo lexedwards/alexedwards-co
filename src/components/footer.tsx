@@ -76,14 +76,14 @@ query{
         {MenuItems.allContentfulPage.edges.map((page: PageInt) => {
           if (!page.node.meta.slug) return undefined;
           if (page.node.title === 'Contact') return (
-            <Link to={`/${page.node.meta.slug}/`} key={page.node.title}>
+            <Link to={`/${page.node.meta.slug}`} key={page.node.title}>
               <p className="cta">
                 Say Hello
               </p>
             </Link>
           )
           return (
-            <Link to={`/${page.node.meta.slug}/`} key={page.node.title}>
+            <Link to={`/${page.node.meta.slug}`} key={page.node.title}>
               <p>
                 {page.node.title}
               </p>

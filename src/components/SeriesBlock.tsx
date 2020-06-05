@@ -95,13 +95,13 @@ function SeriesBlock({ postId, series }: SeriesI) {
       <SeriesFrame>
         <H5>{series.title}</H5>
         <Link
-          to={`/${postsInOrder[0].meta.slug}/`}
+          to={`/${postsInOrder[0].meta.slug}`}
           className={(0 === idx) ? 'SeriesActive' : ''}
         >
           <Linkframe>{`1. ${postsInOrder[0].title}`}</Linkframe>
         </Link>
         <Link
-          to={`/${postsInOrder[1].meta.slug}/`}
+          to={`/${postsInOrder[1].meta.slug}`}
           className={(1 === idx) ? 'SeriesActive' : ''}
         >
           <Linkframe>{`2. ${postsInOrder[1].title}`}</Linkframe>
@@ -111,7 +111,7 @@ function SeriesBlock({ postId, series }: SeriesI) {
         ) : (
             postsInOrder.slice(2, -2).map((p, i) => {
               <Link
-                to={`/${p.meta.slug}/`}
+                to={`/${p.meta.slug}`}
                 key={i}
                 className={(p.meta.id === postId) ? 'SeriesActive' : ''}
               >
@@ -120,13 +120,13 @@ function SeriesBlock({ postId, series }: SeriesI) {
             })
           )}
         <Link
-          to={`/${postsInOrder[postsInOrder.length - 2].meta.slug}/`}
+          to={`/${postsInOrder[postsInOrder.length - 2].meta.slug}`}
           className={(postsInOrder.length - 2 === idx) ? 'SeriesActive' : ''}
         >
           <Linkframe>{`${postsInOrder.length}. ${postsInOrder[postsInOrder.length - 2].title}`}</Linkframe>
         </Link>
         <Link
-          to={`/${postsInOrder[postsInOrder.length - 1].meta.slug}/`}
+          to={`/${postsInOrder[postsInOrder.length - 1].meta.slug}`}
           className={(postsInOrder.length - 1 === idx) ? 'SeriesActive' : ''}
         >
           <Linkframe>{`${postsInOrder.length}. ${postsInOrder[postsInOrder.length - 1].title}`}</Linkframe>
@@ -141,7 +141,7 @@ function SeriesBlock({ postId, series }: SeriesI) {
       <H5>{series.title}</H5>
       {postsInOrder.map((p, i) => (
         <Link
-          to={`/${p.meta.slug}/`}
+          to={`/${p.meta.slug}`}
           key={i}
           className={(p.meta.id === postId) ? 'SeriesActive' : ''}
         >
