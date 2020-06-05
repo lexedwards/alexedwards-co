@@ -1,7 +1,7 @@
 import * as React from 'react'
 import render from 'render'
 import cases from 'jest-in-case'
-import IconLoader from '../socialIcons'
+import IconLoader from '../IconLoader'
 
 cases(
   'Returns (icon) or fail',
@@ -19,6 +19,10 @@ cases(
     { name: 'Instagram Icon', icon: 'instagram' },
     { name: 'Linkedin Icon', icon: 'linkedin' },
     { name: 'Twitter Icon', icon: 'twitter' },
+    { name: 'Glasses Icon', icon: 'glasses' },
+    { name: 'Labs Icon', icon: 'labs' },
+    { name: 'Posts Icon', icon: 'posts' },
+    { name: 'Chat Icon', icon: 'chat' },
   ],
 )
 
