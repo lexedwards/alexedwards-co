@@ -26,6 +26,7 @@ const Nav = styled.nav`
 position: fixed;
 left: 0;
 bottom: 0;
+z-index: 900;
 display: flex;
 justify-content: space-evenly;
 width: 100%;
