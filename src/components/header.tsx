@@ -68,7 +68,6 @@ interface PageInt {
 const HeaderComponent = ({ location }: Props) => {
 
   const size = useWindowSize()
-  console.log(size)
 
   const data = useStaticQuery(
     graphql`

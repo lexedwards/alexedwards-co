@@ -30,16 +30,23 @@ display: flex;
 justify-content: space-evenly;
 width: 100%;
 background: ${props => props.theme.neutral.n50};
+border-top: 2px solid ${props => props.theme.neutral.n200};
 > a {
   flex: 1 1;
   margin-left:0.25rem;
   margin-right:0.25rem;
   text-align: center;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: transparent;
 }
 a:hover, a.current {
   svg {
-    fill: hsl(10,50%,50%);
+    fill: hsl(199,88%,60%);
   }
+}
+a.current {
+  border-color: hsl(199,88%,60%);
 }
 svg {
   width: 24px;
@@ -53,14 +60,14 @@ p {
 }
 `
 
-const MobileNav: React.FC<MobileProps> = ({ data, location }) => {
+const MobileNav: React.FC<MobileProps> = ({ data }) => {
   return (
     <Nav>
       {data.map(item => {
 
         const slug = item.node.meta.slug
         return (
-          <Link to={`/${slug}`} key={slug} className={location === `/${slug}` ? 'current' : ''}>
+          <Link to={`/${slug}`} key={slug} activeClassName='current' >
             <IconLoader icon={expectedItems[slug]} />
             <p>{item.node.title}</p>
           </Link>

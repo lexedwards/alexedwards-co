@@ -1,21 +1,20 @@
 import * as React from 'react'
 import render from 'render'
-import { axe } from 'jest-axe'
+import {axe} from 'jest-axe'
 import mockSeries from 'SeriesBlockUtil'
 import SeriesBlock from '../SeriesBlock'
-
 
 const mockId = '3'
 
 test('Renders with no A11y Violations', async () => {
   const series = mockSeries()
-  const { container } = render(<SeriesBlock postId={mockId} series={series} />)
+  const {container} = render(<SeriesBlock postId={mockId} series={series} />)
   expect(await axe(container)).toHaveNoViolations()
 })
 
 test('Renders the Block', () => {
   const series = mockSeries(3)
-  const { getByRole } = render(<SeriesBlock postId={mockId} series={series} />)
+  const {getByRole} = render(<SeriesBlock postId={mockId} series={series} />)
   const header = getByRole('heading')
   expect(header).toMatchInlineSnapshot(`
     <h5
@@ -28,7 +27,7 @@ test('Renders the Block', () => {
 
 test('Renders 3 elements, highlighting current', () => {
   const series = mockSeries()
-  const { getByRole, getAllByRole } = render(
+  const {getByRole, getAllByRole} = render(
     <SeriesBlock postId={mockId} series={series} />,
   )
   const header = getByRole('heading')
@@ -46,13 +45,12 @@ test('Renders 3 elements, highlighting current', () => {
 
 test('Renders 4 elements with an accordian between', () => {
   const series = mockSeries(9)
-  const { getAllByRole } = render(<SeriesBlock postId={mockId} series={series} />)
+  const {getAllByRole} = render(<SeriesBlock postId={mockId} series={series} />)
   const links = getAllByRole('link')
   expect(links).toMatchInlineSnapshot(`
     Array [
       <a
-        class=""
-        href="/series1/"
+        href="/series1"
       >
         <p
           class="sc-AxjAm jkJDfQ"
@@ -61,8 +59,7 @@ test('Renders 4 elements with an accordian between', () => {
         </p>
       </a>,
       <a
-        class=""
-        href="/series2/"
+        href="/series2"
       >
         <p
           class="sc-AxjAm jkJDfQ"
@@ -71,8 +68,7 @@ test('Renders 4 elements with an accordian between', () => {
         </p>
       </a>,
       <a
-        class=""
-        href="/series8/"
+        href="/series8"
       >
         <p
           class="sc-AxjAm jkJDfQ"
@@ -81,8 +77,7 @@ test('Renders 4 elements with an accordian between', () => {
         </p>
       </a>,
       <a
-        class=""
-        href="/series9/"
+        href="/series9"
       >
         <p
           class="sc-AxjAm jkJDfQ"

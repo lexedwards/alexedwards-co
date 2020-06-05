@@ -17,12 +17,6 @@ interface SeriesI {
   }
 }
 
-enum Location {
-  front,
-  middle,
-  end
-}
-
 const Linkframe = styled.p`
   font-weight: 600;
 `
@@ -64,31 +58,12 @@ function sortByEntryDate(arr: PostArray[]): PostArray[] {
   return arr;
 }
 
-function currentInfo(sortedArr: PostArray[], postId: string, ) {
-  const index = sortedArr.findIndex(ele => ele.meta.id === postId)
-
-  const position = (arr: PostArray[], idx: number) => {
-    const length = arr.length;
-    if (idx < 2) return Location.front;
-    if (idx > (length - 2)) return Location.end;
-    return Location.middle
-  }
-
-  return [
-    index,
-    position(sortedArr, index),
-  ]
-}
-
-
-
-function SeriesBlock({ postId, series }: SeriesI) {
+function SeriesBlock({ series }: SeriesI) {
 
   const postsInOrder = sortByEntryDate(series.post)
 
   // if (i > 4) return [1, {...}, 4, 5]
   if (postsInOrder.length > 4) {
-    const [idx,] = currentInfo(postsInOrder, postId)
     const [collapsed, setShowAll] = React.useState(true);
 
     return (
@@ -96,13 +71,13 @@ function SeriesBlock({ postId, series }: SeriesI) {
         <H5>{series.title}</H5>
         <Link
           to={`/${postsInOrder[0].meta.slug}`}
-          className={(0 === idx) ? 'SeriesActive' : ''}
+          activeClassName='SeriesActive'
         >
           <Linkframe>{`1. ${postsInOrder[0].title}`}</Linkframe>
         </Link>
         <Link
           to={`/${postsInOrder[1].meta.slug}`}
-          className={(1 === idx) ? 'SeriesActive' : ''}
+          activeClassName='SeriesActive'
         >
           <Linkframe>{`2. ${postsInOrder[1].title}`}</Linkframe>
         </Link>
@@ -113,7 +88,7 @@ function SeriesBlock({ postId, series }: SeriesI) {
               <Link
                 to={`/${p.meta.slug}`}
                 key={i}
-                className={(p.meta.id === postId) ? 'SeriesActive' : ''}
+                activeClassName='SeriesActive'
               >
                 <Linkframe>{`${i + 1}.  ${p.title}`}</Linkframe>
               </Link>
@@ -121,13 +96,13 @@ function SeriesBlock({ postId, series }: SeriesI) {
           )}
         <Link
           to={`/${postsInOrder[postsInOrder.length - 2].meta.slug}`}
-          className={(postsInOrder.length - 2 === idx) ? 'SeriesActive' : ''}
+          activeClassName='SeriesActive'
         >
           <Linkframe>{`${postsInOrder.length}. ${postsInOrder[postsInOrder.length - 2].title}`}</Linkframe>
         </Link>
         <Link
           to={`/${postsInOrder[postsInOrder.length - 1].meta.slug}`}
-          className={(postsInOrder.length - 1 === idx) ? 'SeriesActive' : ''}
+          activeClassName='SeriesActive'
         >
           <Linkframe>{`${postsInOrder.length}. ${postsInOrder[postsInOrder.length - 1].title}`}</Linkframe>
         </Link>
@@ -143,7 +118,7 @@ function SeriesBlock({ postId, series }: SeriesI) {
         <Link
           to={`/${p.meta.slug}`}
           key={i}
-          className={(p.meta.id === postId) ? 'SeriesActive' : ''}
+          activeClassName='SeriesActive'
         >
           <Linkframe>{`${i + 1}.  ${p.title}`}</Linkframe>
         </Link>
