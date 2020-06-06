@@ -50,13 +50,14 @@ a.current {
   border-color: hsl(199,88%,60%);
 }
 svg {
-  width: 24px;
-  height: 24px;
+  width: 1rem;
+  height: 1rem;
   margin: 0.5rem;
   stroke: ${props => props.theme.neutral.n800};
 }
 p {
   margin : 0 0 0.25rem 0;
+  font-size: 0.75rem;
   color: ${props => props.theme.neutral.n800};
 }
 `
