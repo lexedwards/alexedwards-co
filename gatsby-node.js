@@ -39,10 +39,25 @@ async function createPosts({ graphql, actions }) {
       }
     })
   })
+}
+
+async function createPostIndex({ graphql, actions }) {
+  const template = path.resolve('./src/templates/posts.tsx')
+
+  actions.createPage({
+    path: `/posts`,
+    component: template,
+    context: {
+      prefix: ``
+    }
+  })
 
 }
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  await Promise.all([createPosts({ graphql, actions })]);
+  await Promise.all([
+    createPosts({ graphql, actions }),
+    createPostIndex({ graphql, actions }),
+  ]);
 }
