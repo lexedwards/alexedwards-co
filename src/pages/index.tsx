@@ -2,8 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import Img, { FluidObject } from 'gatsby-image'
-import { HomepageQuery } from '../../graphql-types'
+import Img from 'gatsby-image'
 import renderAst from '../components/utils/Rehype'
 import { H1, H2, H5 } from '../components/styles/headings'
 
@@ -33,11 +32,13 @@ align-items: center;
 `
 
 interface HomepageProps {
-  data: HomepageQuery
+  data: {
+    page: PageHome
+  }
 }
 
 const IndexPage: React.FC<HomepageProps> = ({ data }) => {
-  const blocks = data.allContentfulPage.edges[0].node.blocks;
+  const blocks = data.page.blocks;
   const subBlack = blocks?.subTitle?.split(' ').slice(0, 4).join(' ')
   const subColor = blocks?.subTitle?.split(' ').slice(4).join(' ')
   return (
@@ -51,7 +52,7 @@ const IndexPage: React.FC<HomepageProps> = ({ data }) => {
       </Pos>
       <SplitView>
         <Rounded>
-          <Img fluid={blocks?.authorBio?.profilePicture?.fluid as FluidObject} />
+          <Img fluid={blocks?.authorBio?.profilePicture?.fluid} />
         </Rounded>
         <div style={{ maxWidth: '680px' }}>
           <H2>{blocks?.authorBio?.blurbTitle}</H2>
@@ -64,9 +65,7 @@ const IndexPage: React.FC<HomepageProps> = ({ data }) => {
 
 export const query = graphql`
 query Homepage {
-allContentfulPage(filter: {title: {regex: "/homepage/i"}}) {
-edges {
-  node {
+  page: contentfulPage(title: {regex: "/homepage/i"}) {
     title
     blocks {
       ... on ContentfulPageHome {
@@ -89,8 +88,6 @@ edges {
       }
     }
   }
-}
-}
 }
 `
 

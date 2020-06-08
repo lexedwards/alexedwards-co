@@ -20,7 +20,7 @@ margin-top: 1.5rem;
 function MetaTile({ entryDate, fluidImage, title, readingTime }: MetaI): React.ReactElement {
   return (
     <>
-      {fluidImage && (<Img fluid={fluidImage as FluidObject} />)}
+      {fluidImage && (<Img fluid={fluidImage} />)}
       <Dive>
         <H1>{title}</H1>
         <P>{entryDate} : {readingTime}</P>

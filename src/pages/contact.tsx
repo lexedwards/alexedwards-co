@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { ContactPageQuery } from '../../graphql-types'
 import { H1 } from '../components/styles/headings'
 import renderAst from '../components/utils/Rehype'
 import { Helmet } from 'react-helmet'
@@ -9,7 +8,10 @@ import IconLoader from '../components/IconLoader'
 import Link from '../components/utils/Link'
 
 interface ContactProps {
-  data: ContactPageQuery
+  data: {
+    page: PageContact
+    social: SocialLinks
+  }
 }
 
 const Inner = styled.div`

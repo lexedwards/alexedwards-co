@@ -46,9 +46,10 @@ function Footer() {
 
   const MenuItems = useStaticQuery(graphql`
 query{
-  allContentfulPage(filter: { isTopLevel: { eq: true } }, sort: { fields: title }) {
+  allContentfulPage(filter: { isTopLevel: { eq: true } }, sort: {fields: index, order: ASC}) {
     edges {
       node {
+        index
         title
         meta {
           ...on ContentfulMeta {

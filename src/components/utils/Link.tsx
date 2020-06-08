@@ -1,17 +1,7 @@
 import * as React from 'react'
 import { Link as GLink, navigate } from 'gatsby'
 
-interface LinkProps {
-  children: React.ReactNode | string;
-  className?: string;
-  role?: string;
-  activeClassName?: string;
-  partiallyActive?: boolean;
-  to?: string;
-  href?: string;
-}
-
-function Link({ children, to, href, activeClassName, partiallyActive, ...rest }: LinkProps): React.ReactElement {
+function Link({ children, to, href, activeClassName, partiallyActive, ...rest }: LinkComponent): React.ReactElement {
   const internal = /^\/(?!\/)/
   const file = /\.[0-9a-z]+$/i
   const local = /^[#?]/

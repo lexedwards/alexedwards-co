@@ -11,10 +11,7 @@ export type PostArray = {
 
 interface SeriesI {
   postId: string
-  series: {
-    title: string
-    post: PostArray[]
-  }
+  series: Series
 }
 
 const Linkframe = styled.p`
@@ -49,7 +46,7 @@ padding: 1rem;
 margin: 0;
 `
 
-function sortByEntryDate(arr: PostArray[]): PostArray[] {
+function sortByEntryDate(arr: Post[]): Post[] {
   arr.sort((a, b) => {
     const aDate = a.meta.entryDate as string
     const bDate = b.meta.entryDate as string

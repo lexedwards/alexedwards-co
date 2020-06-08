@@ -23,6 +23,7 @@ const renderAst = new rehypeReact({
     table: Body.Table,
     th: Body.TH,
     td: Body.TD,
+    hr: Body.HR,
   }
 }).Compiler;
 
