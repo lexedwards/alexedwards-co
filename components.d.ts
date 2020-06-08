@@ -6,4 +6,5 @@ interface LinkComponent {
   partiallyActive?: boolean;
   to?: string;
   href?: string;
+  'aria-label'?: string
 }

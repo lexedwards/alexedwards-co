@@ -47,7 +47,7 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
           {
             Object.entries(data.social as { [key: string]: string }).map(link => {
               return (
-                <Link to={link[1]} key={link[0]}>
+                <Link to={link[1]} key={link[0]} aria-label={`go to my ${link[0]}`}>
                   <IconLoader icon={link[0]} />
                 </Link>
               )
