@@ -4,19 +4,8 @@ import styled from 'styled-components'
 
 interface ContentI {
   prefix?: string
-  prev?: QNode
-  next?: QNode
-}
-
-export type QNode = {
-  node: {
-    id: string
-    title: string
-    meta: {
-      entryDate: string
-      slug: string
-    }
-  }
+  prev?: PostEdge
+  next?: PostEdge
 }
 
 const Nav = styled.nav`

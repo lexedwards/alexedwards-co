@@ -64,5 +64,12 @@ padding: 0.75rem;
 font-size: ${props => props.theme.fontSize.sm}
 `
 
+const HR = styled.hr`
+width: 50%;
+color: ${props => props.theme.neutral.n100};
+border-width: 2px;
+border-radius: 2px;
+border-style: solid;
+`
 
-export { P, BQ, Table, TH, TD, OL, UL, LI, InlineList }
+export { P, BQ, Table, TH, TD, OL, UL, LI, InlineList, HR }

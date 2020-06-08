@@ -7,11 +7,8 @@ cases(
   'Returns (icon) or fail',
   opts => {
     const { container } = render(<IconLoader icon={opts.icon} />)
-    expect(container).toMatchInlineSnapshot(`
-      <div>
-        <test-file-stub />
-      </div>
-    `)
+    expect(container.querySelector('test-file-stub')).toHaveAttribute('alt')
+    expect(container.querySelector('test-file-stub')).toHaveAttribute('aria-label')
   },
   [
     { name: 'Dev Icon', icon: 'dev' },
@@ -23,6 +20,9 @@ cases(
     { name: 'Labs Icon', icon: 'labs' },
     { name: 'Posts Icon', icon: 'posts' },
     { name: 'Chat Icon', icon: 'chat' },
+    { name: 'Config Icon', icon: 'config' },
+    { name: 'Send Icon', icon: 'send' },
+    { name: 'Star Icon', icon: 'star' },
   ],
 )
 

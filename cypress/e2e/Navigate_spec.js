@@ -1,27 +1,28 @@
-describe('Navigate the Default Pages', () => {
+describe('Navigate through Pages', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.injectAxe()
   })
-
-  it('Has no A11y Violations', () => {
-    cy.checkA11y(null, {
-      runOnly: {
-        type: 'tag',
-        values: ['wcag2a'],
-      },
-    })
-  })
-
   it('Has Navigation', () => {
     cy.findByRole('navigation')
       .findByText(/about/i)
       .click()
+      .url().should('include', '/about')
+    cy.WCAG2a()
+    cy.findByRole('navigation')
+      .findByText(/posts/i)
+      .click()
+      .url().should('include', '/posts')
+    cy.WCAG2a()
     cy.findByRole('navigation')
       .findByText(/say hello/i)
       .click()
+      .url().should('include', 'contact')
+    cy.WCAG2a()
     cy.findAllByRole('heading')
       .findByText(/alex edwards/i)
       .click()
+    cy.assertHome()
   })
+
 })
