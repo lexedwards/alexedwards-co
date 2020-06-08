@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import Img, { FluidObject } from 'gatsby-image'
+import Img from 'gatsby-image'
 import { H2 } from '../components/styles/headings'
 import Link from '../components/utils/Link'
 import { P } from '../components/styles/body'
@@ -9,14 +9,14 @@ import styled from 'styled-components'
 
 export const postsQuery = graphql`
   query Posts {
-    allPosts : allContentfulPost {
+    allPosts : allContentfulPost (sort: {order: DESC, fields: meta___entryDate}) {
       edges {
         node {
           title
           meta {
             tags
             slug
-            entryDate(fromNow : true)
+            entryDate(formatString: "Do MMMM, 'YY")
             desc {
               childMarkdownRemark {
                 rawMarkdownBody
@@ -43,40 +43,10 @@ export const postsQuery = graphql`
   }
 `
 
-interface QueryData {
-  allPosts: {
-    edges: {
-      node?: {
-        title: string
-        meta: {
-          tags: string[]
-          slug: string
-          entryDate: string
-          desc: {
-            childMarkdownRemark: {
-              rawMarkdownBody: string
-            }
-          }
-          thumbnail: {
-            fluid: FluidObject
-          }
-        }
-        body: {
-          childMarkdownRemark: {
-            fields: {
-              readingTime: {
-                text: string
-              }
-            }
-          }
-        }
-      }
-    }[]
-  }
-}
-
 interface Props {
-  data: QueryData
+  data: {
+    allPosts: AllPosts
+  }
   pageContext: {
     prefix: string
   }
@@ -95,7 +65,7 @@ function PostsTemplate({ data, pageContext }: Props) {
           <Link to={`${pageContext.prefix}/${post.node?.meta.slug}`}>
             <H2>{post.node?.title}</H2>
           </Link>
-          <P>{post.node?.body.childMarkdownRemark.fields.readingTime.text}</P>
+          <P>{post.node?.meta.entryDate} : {post.node?.body.childMarkdownRemark.fields.readingTime.text}</P>
           <P>{post.node?.meta.desc.childMarkdownRemark.rawMarkdownBody}</P>
         </Block>
       ))}
