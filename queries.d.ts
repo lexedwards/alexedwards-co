@@ -10,7 +10,7 @@ interface Post {
   title: string
   meta: Meta
   series?: Series
-  portfolioItem?: unknown
+  lab_item?: LabItem
   body: {
     body: string
     childMarkdownRemark: MarkdownRemark
@@ -143,3 +143,18 @@ interface ContactBlocks {
   contactPerson: Bio
 }
 
+interface AllLabItems {
+  edges: LabItemEdge[]
+}
+
+interface LabItemEdge {
+  node: LabItem
+}
+
+interface LabItem {
+  title: string
+  meta: Meta
+  repo: string
+  liveUrl: string
+  post?: Post
+}
