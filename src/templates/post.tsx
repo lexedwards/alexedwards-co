@@ -2,16 +2,14 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import renderAst from '../components/utils/Rehype'
 import { Helmet } from 'react-helmet'
-import { PostQuery } from '../../graphql-types'
 import MetaTile from '../components/meta'
-import { FluidObject } from 'gatsby-image'
-import ContentNav, { QNode } from '../components/ContentNav'
-import SeriesBlock, { PostArray } from '../components/SeriesBlock'
+import ContentNav from '../components/ContentNav'
+import SeriesBlock from '../components/SeriesBlock'
 
 
 export const pageQuery = graphql`
 query Post($id: String!) {
-  page : contentfulPost(id: {eq: $id}) {
+  post : contentfulPost(id: {eq: $id}) {
     title
     meta {
       id
@@ -53,38 +51,43 @@ query Post($id: String!) {
 `
 
 interface PostTemplate {
-  data: PostQuery
-  scope: unknown
+  data: {
+    post: Post
+  }
   pageContext: {
     id?: string
     slug?: string
     collection?: string
-    prev?: QNode
-    next?: QNode
+    prev?: PostEdge
+    next?: PostEdge
   }
 }
 
 function PostTemplate({ data, pageContext }: PostTemplate) {
 
+  if (!data.post) { return <div>Opps! There should be a page here!</div> }
+
+  const displayTitle = data.post.series ? `${data.post.title} | ${data.post.series.title}` : data.post.title
+
   return (
     <>
       <Helmet>
-        <title>{data.page?.title} || Alex Edwards</title>
+        <title>{data.post?.title} || Alex Edwards</title>
       </Helmet>
       <MetaTile
-        entryDate={data.page?.meta?.entryDate}
-        tags={data.page?.meta?.tags as string[]}
-        fluidImage={data.page?.meta?.thumbnail?.fluid as FluidObject}
-        title={`${data.page?.title}${data.page?.series && ` | ${data.page.series.title}`}`}
-        readingTime={data.page?.body?.childMarkdownRemark?.fields?.readingTime?.text as string}
+        entryDate={data.post?.meta?.entryDate}
+        tags={data.post?.meta?.tags}
+        fluidImage={data.post?.meta?.thumbnail?.fluid}
+        title={displayTitle}
+        readingTime={data.post?.body?.childMarkdownRemark?.fields?.readingTime?.text}
       />
-      {data.page?.series && (
+      {data.post?.series && (
         <SeriesBlock
-          postId={data.page?.meta?.id as string}
-          series={data.page.series as { title: string; post: PostArray[] }}
+          postId={data.post?.meta?.id}
+          series={data.post.series}
         />
       )}
-      {renderAst(data?.page?.body?.childMarkdownRemark?.htmlAst)}
+      {renderAst(data?.post?.body?.childMarkdownRemark?.htmlAst)}
       <ContentNav prefix={''} prev={pageContext?.prev} next={pageContext?.next} />
     </>
   )

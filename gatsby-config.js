@@ -2,6 +2,19 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+}
+
+// CONTENTFUL_HOST = 'preview.contentful.com' to use preview API
+
+if (process.env.CONTENTFUL_HOST) {
+  contentfulConfig.host = process.env.CONTENTFUL_HOST
+}
+
+const { spaceId, accessToken } = contentfulConfig
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Tested Starter`,
@@ -29,16 +42,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      }
-    },
-    {
-      resolve: `gatsby-plugin-ts`,
-      options: {
-        typeCheck: process.env.NODE_ENV !== 'production',
-      }
+      options: contentfulConfig
     },
     {
       resolve: `gatsby-transformer-remark`,

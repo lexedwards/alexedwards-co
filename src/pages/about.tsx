@@ -1,14 +1,16 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { AboutQuery } from '../../graphql-types'
 import { Helmet } from 'react-helmet'
-import Img, { FluidObject } from 'gatsby-image'
+import Img from 'gatsby-image'
 import { H1 } from '../components/styles/headings'
 import renderAst from '../components/utils/Rehype'
 import styled from 'styled-components'
 
 interface AboutProps {
-  data: AboutQuery
+  data: {
+    page: PageAbout
+    pic: Bio
+  }
 }
 
 const Rounded = styled.div`
@@ -37,7 +39,7 @@ const AboutPage: React.FC<AboutProps> = ({ data }) => {
       </Helmet>
       <SplitView>
         <Rounded>
-          <Img fluid={data.pic?.profilePicture?.fluid as FluidObject} />
+          <Img fluid={data.pic?.profilePicture?.fluid} />
         </Rounded>
         <H1>{data.page?.blocks?.title}</H1>
       </SplitView>
