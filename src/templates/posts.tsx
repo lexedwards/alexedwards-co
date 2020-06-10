@@ -7,42 +7,6 @@ import Link from '../components/utils/Link'
 import { P } from '../components/styles/body'
 import styled from 'styled-components'
 
-export const postsQuery = graphql`
-  query Posts {
-    allPosts : allContentfulPost (sort: {order: DESC, fields: meta___entryDate}) {
-      edges {
-        node {
-          title
-          meta {
-            tags
-            slug
-            entryDate(formatString: "Do MMMM, 'YY")
-            desc {
-              childMarkdownRemark {
-                rawMarkdownBody
-              }
-            }
-            thumbnail {
-              fluid(maxWidth: 960) {
-                ...GatsbyContentfulFluid_tracedSVG
-              }
-            }
-          }
-          body {
-            childMarkdownRemark {
-              fields {
-                readingTime {
-                  text
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
 interface Props {
   data: {
     allPosts: AllPosts
@@ -81,3 +45,39 @@ h2 {
 `
 
 export default PostsTemplate
+
+export const postsQuery = graphql`
+  query Posts {
+    allPosts : allContentfulPost (sort: {order: DESC, fields: meta___entryDate}) {
+      edges {
+        node {
+          title
+          meta {
+            tags
+            slug
+            entryDate(formatString: "Do MMMM, 'YY")
+            desc {
+              childMarkdownRemark {
+                rawMarkdownBody
+              }
+            }
+            thumbnail {
+              fluid(maxWidth: 960) {
+                ...GatsbyContentfulFluid_tracedSVG
+              }
+            }
+          }
+          body {
+            childMarkdownRemark {
+              fields {
+                readingTime {
+                  text
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
