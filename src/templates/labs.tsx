@@ -51,9 +51,9 @@ export default function Labs({ data }: Props) {
             </InlineList>
             {renderAst(lab.node.meta.desc.childMarkdownRemark.htmlAst)}
             <Links>
-              <Link to={lab.node.liveUrl}><p>Visit</p></Link>
-              <Link to={lab.node.repo}><p>Repo</p></Link>
-              {lab.node.post && <Link to={`/${lab.node.post.meta.slug}`}><p>Post</p></Link>}
+              <Link to={lab.node.liveUrl}><p>Visit Live Site</p></Link>
+              <Link to={lab.node.repo}><p>Source Repo</p></Link>
+              {lab.node.post && <Link to={`/${lab.node.post.meta.slug}`}><p>Write up</p></Link>}
             </Links>
           </div>
         </Main>
