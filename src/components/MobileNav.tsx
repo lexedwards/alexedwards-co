@@ -8,7 +8,7 @@ interface MobileProps {
     node: {
       title: string;
       meta: {
-        slug: 'about' | 'portfolio' | 'posts' | 'contact';
+        slug: 'about' | 'labs' | 'posts' | 'contact';
       }
     }
   }[]
@@ -17,7 +17,7 @@ interface MobileProps {
 
 const expectedItems = {
   about: 'glasses',
-  portfolio: 'labs',
+  labs: 'labs',
   posts: 'posts',
   contact: 'chat'
 }
@@ -66,7 +66,6 @@ const MobileNav: React.FC<MobileProps> = ({ data }) => {
   return (
     <Nav>
       {data.map(item => {
-
         const slug = item.node.meta.slug
         if (slug === 'contact') item.node.title = 'Say Hello'
         return (
