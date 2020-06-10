@@ -54,10 +54,22 @@ async function createPostIndex({ graphql, actions }) {
 
 }
 
+async function createLabsIndex({ graphql, actions }) {
+  const template = path.resolve('./src/templates/labs.tsx')
+  actions.createPage({
+    path: `/labs`,
+    component: template,
+    context: {
+      prefix: ``
+    }
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   await Promise.all([
     createPosts({ graphql, actions }),
     createPostIndex({ graphql, actions }),
+    createLabsIndex({ graphql, actions }),
   ]);
 }
