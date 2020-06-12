@@ -17,8 +17,8 @@ const { spaceId, accessToken } = contentfulConfig
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Tested Starter`,
-    description: `Gatsby template setup with Cypress (End-to-End testing), Jest (Unit & Integration testing) and Typescript (Type validation)`,
+    title: `Personal Website`,
+    description: `Built with ReactJS, Typescript, and full testing suite`,
     author: `Alex Edwards <alex@alexedwards.co> (https://alexedwards.co)`,
   },
   plugins: [
@@ -75,13 +75,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Alex Edwards' Personal Website`,
+        short_name: `Alex Edwards`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#1A1A1A`,
+        theme_color: `#1A1A1A`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/siteIcon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
