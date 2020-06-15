@@ -34,10 +34,16 @@ display: flex;
 `
 
 export default function Labs({ data }: Props) {
+  const meta = data.siteMeta.meta as Meta
   return (
     <>
       <Helmet>
-        <title>{data.siteMeta.title}</title>
+        <title>{data.siteMeta.title} | Alex Edwards</title>
+        <meta name="og:title" content={data.siteMeta.title} />
+        <meta name="twitter:title" content={data.siteMeta.title} />
+        <meta name="description" content={meta.desc.desc} />
+        <meta name="og:description" content={meta.desc.desc} />
+        <meta name="twitter:description" content={meta.desc.desc} />
       </Helmet>
       {data.allLabs.edges.map(lab => (
         <Main key={lab.node.title}>
@@ -72,6 +78,7 @@ export const LabsQuery = graphql`
           meta {
             tags
             desc {
+              desc
               childMarkdownRemark {
                 htmlAst
               }
@@ -99,6 +106,7 @@ export const LabsQuery = graphql`
     meta {
       ... on ContentfulMeta {
         desc {
+          desc
           childMarkdownRemark {
             htmlAst
           }

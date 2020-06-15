@@ -34,6 +34,7 @@ align-items: center;
 interface HomepageProps {
   data: {
     page: PageHome
+    meta: SiteMetaData
   }
 }
 
@@ -44,7 +45,12 @@ const IndexPage: React.FC<HomepageProps> = ({ data }) => {
   return (
     <>
       <Helmet>
-        <title>Alex Edwards | Full Stack JS Developer</title>
+        <title>{data.meta.title}</title>
+        <meta name="og:title" content={data.meta.title} />
+        <meta name="twitter:title" content={data.meta.title} />
+        <meta name="description" content={data.meta.description} />
+        <meta name="og:description" content={data.meta.description} />
+        <meta name="twitter:description" content={data.meta.description} />
       </Helmet>
       <Pos>
         <H1>{blocks?.title}✌️</H1>
@@ -87,6 +93,11 @@ query Homepage {
         }
       }
     }
+  }
+  meta: contentfulSiteMetadata {
+    title
+    description
+    builtWith
   }
 }
 `
