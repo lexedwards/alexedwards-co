@@ -86,7 +86,6 @@
   },
   "keywords": [
     "gatsby",
-    "gatsby-starter",
     "typescript",
     "cypress",
     "jest"
@@ -125,9 +124,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lexedwards/starter-cypr-jest-ts"
+    "url": "https://github.com/lexedwards/alexedwards-co"
   },
   "bugs": {
-    "url": "https://github.com/lexedwards/starter-cypr-jest-ts/issues"
+    "url": "https://github.com/lexedwards/alexedwards-co/issues"
   }
 }

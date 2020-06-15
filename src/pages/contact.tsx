@@ -34,11 +34,16 @@ justify-content: space-between;
 `
 
 const Contact: React.FC<ContactProps> = ({ data }) => {
-
+  const meta = data.page.meta as Meta
   return (
     <>
       <Helmet>
-        <title>{data.page?.blocks?.title}</title>
+        <title>{data.page?.blocks?.title} | Alex Edwards</title>
+        <meta name="og:title" content={data.page?.blocks?.title} />
+        <meta name="twitter:title" content={data.page?.blocks?.title} />
+        <meta name="description" content={meta.desc.desc} />
+        <meta name="og:description" content={meta.desc.desc} />
+        <meta name="twitter:description" content={meta.desc.desc} />
       </Helmet>
       <Inner>
         <H1>{data.page?.blocks?.title}</H1>
@@ -67,6 +72,9 @@ query ContactPage {
       ... on ContentfulMeta {
         tags
         slug
+        desc {
+          desc
+        }
       }
     }
     blocks {

@@ -72,7 +72,12 @@ function PostTemplate({ data, pageContext }: PostTemplate) {
   return (
     <>
       <Helmet>
-        <title>{data.post?.title} || Alex Edwards</title>
+        <title>{data.post?.title} | Alex Edwards</title>
+        <meta name="og:title" content={data.post?.title} />
+        <meta name="twitter:title" content={data.post?.title} />
+        <meta name="description" content={data.post.meta.desc.desc} />
+        <meta name="og:description" content={data.post.meta.desc.desc} />
+        <meta name="twitter:description" content={data.post.meta.desc.desc} />
       </Helmet>
       <MetaTile
         entryDate={data.post?.meta?.entryDate}

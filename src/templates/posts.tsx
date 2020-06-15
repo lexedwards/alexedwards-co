@@ -10,6 +10,7 @@ import styled from 'styled-components'
 interface Props {
   data: {
     allPosts: AllPosts
+    siteMeta: Page
   }
   pageContext: {
     prefix: string
@@ -17,11 +18,16 @@ interface Props {
 }
 
 function PostsTemplate({ data, pageContext }: Props) {
-
+  const meta = data.siteMeta.meta as Meta
   return (
     <>
       <Helmet>
-        <title>Posts || Alex Edwards</title>
+        <title>{data.siteMeta.title} | Alex Edwards</title>
+        <meta name="og:title" content={data.siteMeta.title} />
+        <meta name="twitter:title" content={data.siteMeta.title} />
+        <meta name="description" content={meta.desc.desc} />
+        <meta name="og:description" content={meta.desc.desc} />
+        <meta name="twitter:description" content={meta.desc.desc} />
       </Helmet>
       {data.allPosts.edges.map(post => (
         <Block key={post.node?.meta.slug}>
@@ -76,6 +82,19 @@ export const postsQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+    siteMeta: contentfulPage(title: {regex: "/posts/i"}) {
+    title
+    meta {
+      ... on ContentfulMeta {
+        desc {
+          desc
+        }
+        entryDate
+        slug
+        tags
         }
       }
     }
