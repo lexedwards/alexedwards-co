@@ -31,11 +31,16 @@ align-items: center;
 `
 
 const AboutPage: React.FC<AboutProps> = ({ data }) => {
-
+  const meta = data.page.meta as Meta
   return (
     <>
       <Helmet>
         <title>{data.page?.blocks?.title} | Alex Edwards</title>
+        <meta name="og:title" content={data.page?.blocks?.title} />
+        <meta name="twitter:title" content={data.page?.blocks?.title} />
+        <meta name="description" content={meta.desc.desc} />
+        <meta name="og:description" content={meta.desc.desc} />
+        <meta name="twitter:description" content={meta.desc.desc} />
       </Helmet>
       <SplitView>
         <Rounded>
